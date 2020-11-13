@@ -21,10 +21,31 @@
 | 属性 | 含义 |
 | --- | --- |
 | :first-child  | 第一个符合条件的标签 |
-| :first-letter | 所有符合条件标签的首字符 |
+| :first-letter | 所有符合条件标签的首字符 只能用于块级元素(包括display:[inline-]block;)|
 | :first-line   | 所有符合条件的标签 |
 | :last-child   | 最后一个符合条件的标签 |
 | :nth-child()  | 第()个符合条件的标签 |
+    :first-letter适用的属性
+        font
+        color
+        background
+        margin
+        padding
+        border
+        text-decoration
+        vertical-align(仅当float为none的时候)
+        text-transform
+        line-height
+        float
+        clear
+```html
+<body>
+    <div> div:nth-child(1) | div:first-child </div>
+    <p> p:nth-child(2) </p>
+    <div> div:nth-child(3) </div>
+    <span> span:nth-child(4) | span:last-child </span>
+</body>
+```
 #### 3.4 层次选择器
 | 属性 | 含义 |
 | --- | --- |
