@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽奖</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .border{
+            width:500px;
+            height:500px;
+            position: absolute;
+            left:calc(50% - 250px);
+            top:calc(50% - 250px);
+        }
+        .border .shop{
+            width:45%;
+            height:45%;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .click{
+            width:200px;
+            height:80px;
+            background: #ee5687;
+            text-align: center;
+            line-height: 80px;
+            font-size:24px;
+            color:#fff;
+            border-radius: 5px;
+            cursor:pointer;
+            border:1px solid #eee;
+            position: absolute;
+            bottom:50px;
+            left:calc(50% - 100px);
+        }
+        .color {
+            background: #f00!important;
+        }
+    </style>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+</head>
+<body>
+    <div class="border">
+
+    </div>
+    <div class="click">抽奖</div>
+</body>
+<script>
+    let prize = [
+        {'id':1,'name':'111','weight':1, 'image':'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2495276473,3120959134&fm=26&gp=0.jpg'},
+        {'id':2,'name':'222','weight':5, 'image':'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2495276473,3120959134&fm=26&gp=0.jpg'},
+        {'id':3,'name':'333','weight':20,'image':'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2495276473,3120959134&fm=26&gp=0.jpg'},
+        {'id':4,'name':'333','weight':50,'image':'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2495276473,3120959134&fm=26&gp=0.jpg'}
+    ];
+    function shop(prize){
+        let len = prize.length;
+        let border_html = "";
+        for(let i=0; i<len; i++) {
+            border_html += `<div class="shop" style="background:url(${prize[i]['image']}) 0 0;background-size: 100% 100%;" data-id="${prize[i]['id']}">${prize[i]['name']}</div>`;
+        }
+        return border_html;
+    }
+    $('.border').html(shop(prize));
+
+    $('.click').click(function () {
+        $('shop').removeClass('color');
+        $.ajax({
+            url: './LuckyDraw.php',
+            type: 'post',
+            dataType: "json",
+            data: {data:prize,weight:1000},
+            success:function (res) {
+                if(res == 0){
+                    $('.shop').addxlass('color');
+                }else {
+                    $('.shop').eq(res).addClass('color');
+                }
+            },error:function(e){
+                alert('失败');
+            }
+        })
+    });
+</script>
+</html>

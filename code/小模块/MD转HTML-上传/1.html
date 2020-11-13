@@ -1,0 +1,78 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <style>-->
+<!--        table {-->
+<!--            width:500px;-->
+<!--            height:auto;-->
+<!--            border:1px solid #f00;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--</body>-->
+<!--<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<!--<script>-->
+<!--    let data_json = [-->
+<!--        ['123','h1'],-->
+<!--        ['777','h1'],-->
+<!--        ['属性','th'],-->
+<!--        ['含义','th'],-->
+<!--        ['密码','th'],-->
+<!--        ['aa','td'],-->
+<!--        ['bb','td'],-->
+<!--        ['cc','td'],-->
+<!--        ['dd','td'],-->
+<!--        ['ee','td'],-->
+<!--        ['ee','td'],-->
+<!--        ['ff','td']-->
+<!--    ];-->
+
+<!--    let data_html = '';-->
+<!--    let th_length = 0;-->
+<!--    for(let i=0;i<data_json.length;i++) {-->
+<!--        switch (data_json[i][1]) {-->
+<!--            case 'h1' :-->
+<!--                data_html += `<h1>${data_json[i][0]}</h1>`;-->
+<!--                break;-->
+<!--            case 'th' :-->
+<!--                th_length = 0;-->
+<!--                data_html += `<table><tr>`;-->
+<!--                type_fun('th',i);-->
+<!--                i += (th_length-1);-->
+<!--                data_html += '</tr>';-->
+<!--                break;-->
+<!--            case 'td' :-->
+<!--                data_html += `<tr>`;-->
+<!--                i += type_fun('td',i,0,th_length);-->
+<!--                data_html += '</tr></table>';-->
+<!--                break;-->
+<!--            case 'text' :-->
+<!--                data_html += data_json[i][0];-->
+<!--                break;-->
+<!--        }-->
+<!--    }-->
+
+<!--    function type_fun(type,index,num=0,length=0) {-->
+<!--        if(data_json[index+num]) {-->
+<!--            if(data_json[index+num][1] == type) {-->
+<!--                data_html += `<${type}>${data_json[index+num][0]}</${type}>`;-->
+<!--                num++;-->
+<!--                th_length++;-->
+<!--                if( type == 'td' && num%length == 0){-->
+<!--                    data_html += `</tr><tr>`;-->
+<!--                }-->
+<!--                type_fun(type,index,num,length);-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+
+<!--    $('body').html(data_html);-->
+<!--</script>-->
+<!--</html>-->

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wathc</title>
+    <style type="text/css">
+        /* 以下代码通过滤镜将页面中所有的彩色去掉，适用于各种纪念日，请维护人员及时删除或注释掉 */
+        /*
+        html {
+
+            filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            -o-filter: grayscale(100%);
+            filter: gray;
+            -webkit-filter: grayscale(1);
+        }
+        /**/
+    </style>
+</head>
+<body>
+<script language="JavaScript">
+    /**
+     * @desc 属性改变监听，属性被set时出发watch的方法，类似vue的watch
+     * @author Jason
+     * @study https://www.jianshu.com/p/00502d10ea95
+     * @data 2018-04-27
+     * @constructor
+     * @param {object} opts - 构造参数. @default {data:{},watch:{}};
+     * @argument {object} data - 要绑定的属性
+     * @argument {object} watch - 要监听的属性的回调
+     * watch @callback (newVal,oldVal) - 新值与旧值
+     */
+    /*
+    class watcher{
+        constructor(opts){
+            this.$data = this.getBaseType(opts.data) === 'Object' ? opts.data : {};
+            this.$watch = this.getBaseType(opts.watch) === 'Object' ? opts.watch : {};
+            for(let key in opts.data){
+                this.setData(key)
+            }
+        }
+
+        getBaseType(target) {
+            const typeStr = Object.prototype.toString.apply(target);
+
+            return typeStr.slice(8, -1);
+        }
+
+        setData(_key){
+            Object.defineProperty(this,_key,{
+                get: function () {
+                    return this.$data[_key];
+                },
+                set : function (val) {
+                    const oldVal = this.$data[_key];
+                    if(oldVal === val)return val;
+                    this.$data[_key] = val;
+                    this.$watch[_key] && typeof this.$watch[_key] === 'function' && (
+                        this.$watch[_key].call(this,val,oldVal)
+                    );
+                    return val;
+                },
+            });
+        }
+    }
+
+    // export default watcher;
+
+    let wm = new watcher({
+        data:{
+            a: 0,
+            b: 'hello'
+        },
+        watch:{
+            a(newVal,oldVal){
+                console.log(newVal, oldVal); // 111 0
+            },
+            b(newVal,oldVal){
+                console.log(newVal, oldVal); // 222 hello
+            }
+        }
+    })
+    wm.a = 111
+    wm.b = 222
+    /**/
+</script>
+</body>
+<script language="JavaScript">
+    // 数组首尾置换算法
+    /*
+    function f1(arr=[]){
+        let len = arr.length;
+        let max_i = parseInt(len / 2); // parseInt下取整
+        for(let i=0;i<max_i;i++){
+            let temp = arr[len-i-1];
+            arr[len-i-1] = arr[i];
+            arr[i] = temp;
+        }
+        return arr;
+    }
+    /**/
+
+    // 数组首尾置换算法
+    /*
+    function f1_1(arr=[]){
+        let max_len = (arr.length)-1;
+        for(let m=0;m<max_len;m++){
+            let temp = arr[m];
+            arr[m] = arr[max_len];
+            arr[max_len] = temp;
+            max_len--;
+        }
+        return arr;
+    }
+    /**/
+
+    // 数组插入算法
+    /*
+    function f2(arr=[],i,x=""){
+        if(i<0) return ("下标错误");
+        let len = arr.length;
+        let temp = "";
+        for(let l=len;l>=i;l--){
+            arr[l] = arr[l-1];
+        }
+        arr[i] = x;
+        return arr;
+    }
+    /**/
+
+    // 数据插入算法,且值顺序递增
+    /*
+    function f2_2(arr=[],x=0){
+        let i = (arr.length)-1;
+        while( (i>=0) && (x<arr[i])){
+            arr[i+1]=arr[i];
+            i--;
+            arr[i+1] = x;
+        }
+        return arr;
+    }
+    /**/
+
+    // 删除 a,b,c 数组的交集
+    /*
+    function f3(a=[],b=[],c=[]){
+        let i=0;j=0;k=0;m=0;
+        while( (i<a.length) && (j<b.length) && (k<c.length)){
+            if(b[j] < c[k]){
+                j++;
+            }else if(b[j] > c[k]){
+                k++;
+            }else{
+                let BCsame = b[j];
+                while(b[j] == BCsame) j++;
+                while(c[k] == BCsame) k++;
+                while(i<a.length && a[i]<BCsame){
+                    a[m++] = a[i++];
+                }
+                while(i<a.length && a[i]==BCsame){
+                    i++;
+                }
+            }
+            while(i<a.length){
+                a[m++] = a[i++];
+            }
+            a.length = m;
+        }
+        return a;
+    }
+    console.log(f2_2([0,1,3,4],2));
+
+    let a = [0,1,2,3];
+    let b = [0,1,2];
+    let c = [0];
+    console.log(f3(a,b,c)); // 此函数有误，待调整
+    /**/
+</script>
+</html>　
