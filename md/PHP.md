@@ -1079,20 +1079,21 @@ class Think
 }
 ```
 ### 21. PDO操作MySql
-#### 21.1 连接mysql
 ```php
-// new PDO('数据库地址=IP,数据库名=数据库名字','用户名','密码');
-$pdo = new PDO('mysql:host=localhost;dbname=mydb','root','root');
-// 数据库数据以utf-8存取
-$pdo->exec('set names utf8');
-```
-#### 21.2 准备SQL语句
-    $sql->"select * from table_name";
-#### 21.3 请求
-    pdo发送sql语句到mysql服务器,mysql把pdo发送的sql请求的结果返回给php
-    $str = $pdo->query($sql);
-#### 21.4 处理结果集
+// 1.连接mysql
+    // new PDO('数据库地址=IP,数据库名=数据库名字','用户名','密码');
+    $pdo = new PDO('mysql:host=localhost;dbname=mydb','root','root');
+    // 数据库数据以utf-8存取
+    $pdo->exec('set names utf8');
+// 2.准备SQL语句
+    $sql="select * from table_name";
+// 3.请求
+    // pdo发送sql语句到mysql服务器,mysql把pdo发送的sql请求的结果返回给php
+    $res = $pdo->query($sql);
+// 4.处理结果集
     $rows = $res->fetchAll(PDO::FETCH_ASSOC);
+```
+#### 21.4 
 ### 22. 绝对/相对目录
 #### 22.1 PHP
     绝对目录

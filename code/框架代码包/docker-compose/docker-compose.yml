@@ -1,0 +1,72 @@
+version: '3'
+services:
+    nginx:
+        image: nginx:1.17.10-alpine
+        container_name: ${APP_NAME}-nginx
+        ports:
+            - ${HTTP_PORT}:80
+            # - 443:443
+        volumes:
+            - ${PROJECT_PATH}:/var/www/html/app:rw
+            - ${DC_PATH}/conf/nginx/conf.d:/etc/nginx/conf.d/:ro
+            - ${DC_PATH}/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ${DC_PATH}/log/nginx/:/var/log/nginx/:rw
+        environment:
+            - TZ=Asia/Shanghai
+        networks:
+            - net-nginx
+        depends_on:
+            - hyperf
+    hyperf:
+        build: ./image/hyperf
+        container_name: ${APP_NAME}-hyperf
+        tty: true
+        ports:
+            - ${HYPERF_PORT}:9501
+        expose:
+            - 9501
+        volumes:
+            - ${PROJECT_PATH}:/app:rw
+        environment:
+            - TZ=Asia/Shanghai
+            - /bin/sh
+        networks:
+            - net-nginx
+            - net-hyperf
+    mysql:
+        image: mysql:5.7
+        container_name: ${APP_NAME}-mysql
+        ports:
+            - ${MYSQL_PORT}:3306
+        expose:
+            - 3306
+        volumes:
+            - ${DC_PATH}/conf/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:rw
+            - ${DC_PATH}/data/mysql/:/var/lib/mysql/:rw
+        environment:
+            - TZ=Asia/Shanghai
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        networks:
+            - net-hyperf
+    redis:
+        image: redis:5.0-alpine
+        container_name: ${APP_NAME}-redis
+        ports:
+            - "${REDIS_PORT}:6379"
+        expose:
+            - 6379
+        environment:
+            - TZ=Asia/Shanghai
+        networks:
+            - net-hyperf
+        volumes:
+            - ${DC_PATH}/conf/redis/redis.conf:/data/redis.conf
+            - ${DC_PATH}/data/redis:/data/redis:rw
+            - ${DC_PATH}/log/redis/redis.log:/var/log/redis.log:rw
+        command:
+            - "/data/redis.conf"
+#        depends_on:
+#            - hyperf
+networks:
+    ? net-hyperf
+    ? net-nginx

@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+<p>阿三大苏打
+    <img
+        src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&amp;fm=26&amp;gp=0.jpg"
+        style="max-width: 100%;" alt="">
+    嗄是的
+</p>
+<div id="div1"></div>
+</body>
+<script type="text/javascript" src="./wangEditor.min.js"></script>
+<script type="text/javascript">
+    const E = window.wangEditor
+    const editor = new E('#div1')
+    // 或者 const editor = new E( document.getElementById('div1') )
+    editor.config.withCredentials = true;
+    editor.config.uploadImgServer = '/upload-img';
+    editor.config.onblur = function (newHtml) {
+        console.log('onblur', newHtml) // 获取最新的 html 内容
+    }
+    editor.create()
+    console.error();
+</script>
+</html>

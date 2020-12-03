@@ -1,0 +1,5 @@
+.*
+!.gitignore
+data/
+log/
+log/redis/redis.log

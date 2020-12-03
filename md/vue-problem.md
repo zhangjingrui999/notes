@@ -11,7 +11,7 @@
 ### 4.下载依赖
     cnpm install   
 ### 5.运行
-    npm run dev  //这是云行测试的
+    npm run dev  //这是运行测试的
     
     npm run build //打包好会出现一个新的文件,丢到服务器就好.暂时忘了...完了补上是啥文件    ####dist文件
 ### 6.安装axios[^ajax请求用的]
