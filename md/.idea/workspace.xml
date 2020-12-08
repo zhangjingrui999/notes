@@ -20,31 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6a6500-fc0f-47d7-a6a6-900e7fc0dbfd" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap-theme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/area.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/jigsaw.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/jquery-3.5.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/map.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/npm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/selectMore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code/bootstrap-3.3.7-dist/js/session.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP.md" beforeDir="false" afterPath="$PROJECT_DIR$/PHP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-problem.md" beforeDir="false" afterPath="$PROJECT_DIR$/vue-problem.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/md.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/md.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf.md" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,14 +44,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../zhiliangren" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../docker/docker-compose" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,6 +64,9 @@
       <updated>1606897256487</updated>
       <workItem from="1606897257520" duration="3304000" />
       <workItem from="1606956259717" duration="13447000" />
+      <workItem from="1606974166276" duration="28000" />
+      <workItem from="1607044152160" duration="716000" />
+      <workItem from="1607048698611" duration="1743000" />
     </task>
     <servers />
   </component>
@@ -109,17 +90,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="801" y="411" width="460" height="217" key="#Markdown/0.0.1920.1040@0.0.1920.1040" timestamp="1606900521257" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1606958840968">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1607050562044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606958840968" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1606956573646">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607050562044" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1607050569953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606956573646" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606962992242">
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607050569953" />
+    <state x="509" y="211" width="600" height="413" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1607049275774">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606962992242" />
+    <state x="509" y="211" width="600" height="413" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607049275774" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607048825209">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607048825209" />
   </component>
 </project>

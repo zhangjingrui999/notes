@@ -1,4 +1,48 @@
 [文档](https://hyperf.wiki/2.0/#/README)
+### 4. 配置
+#### 4.1 控制台输出
+```php
+    # config/config.php
+    // 控制台DeBug输出
+    LogLevel::DEBUG,
+```
+#### 4.2 热更新
+```shell script
+    # 1. cmd 下载插件
+    wget -O watch https://gitee.com/hanicc/hyperf-watch/raw/master/watch
+
+    # 2. 启动监听
+    php watch
+    # 2. 启动监听并删除代理类缓存(./runtime/container)
+    php watch -c
+
+    # 3. 退出监听
+    Control + C
+```
+##### 默认配置（打开watch文件，可自行修改）
+    # PHP Bin File PHP程序所在路径（默认自动获取）
+    const PHP_BIN_FILE = 'which php';
+    # Watch Dir 监听目录（默认监听脚本所在的根目录）
+    const WATCH_DIR = __DIR__ . '/';
+    # Watch Ext 监听扩展名（多个可用英文逗号隔开）
+    const WATCH_EXT = 'php,env';
+    # Exclude Dir 排除目录（不监听的目录，数组形式)
+    const EXCLUDE_DIR = ['vendor', 'runtime', 'public'];
+    # Entry Point File 入口文件
+    const ENTRY_POINT_FILE = __DIR__ . '/bin/hyperf.php';
+    # Start Command 启动命令
+    const START_COMMAND = [ENTRY_POINT_FILE, 'start'];
+    # PID File Path PID文件路径
+    const PID_FILE_PATH = __DIR__ . '/runtime/hyperf.pid';
+    # Scan Interval 扫描间隔（毫秒，默认2000）
+    const SCAN_INTERVAL = 2000;
+    # Console Color 控制台颜色
+    const CONSOLE_COLOR_DEFAULT = "\033[0m";
+    const CONSOLE_COLOR_RED = "\033[0;31m";
+    const CONSOLE_COLOR_GREEN = "\033[0;32m";
+    const CONSOLE_COLOR_YELLOW = "\033[0;33m";
+    const CONSOLE_COLOR_BLUE = "\033[0;34m";
+
 ### 3. 路由
 #### 3.1 路由文件(config/routes.php)
 ```php
