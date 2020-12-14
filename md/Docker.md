@@ -1,15 +1,21 @@
-### 5. docker-compose 一键安装镜像
+### 6. docker-compose 一键安装镜像
 [现有镜像](../code/框架代码包/docker-compose)
     
     进入docker-compose文件夹
     docker-compose up
 
-### 4. 命令
-#### 4.1 docker
+### 5. 命令
+#### 5.1 docker
 | 命令 | 含义 |
 | --- | --- |
-| docker info | docker详细信息 | |
-#### 4.2 镜像
+| systemctl start docker | 启动 |
+| systemctl stop docker  | 停止 |
+| systemctl restart docker | 重启 |
+| systemctl status docker | 查看状态 |
+| systemctl enable docker | 启动 |
+| yum list installed \| grep docker | 查询安装过的包 |
+| docker info | docker详细信息 |
+#### 5.2 镜像
 | 命令 | 含义 |
 | --- | --- |
 | docker images | 列出本地主机上的镜像 |
@@ -43,7 +49,7 @@
         /opt/bitnami/php/bin/phpize
         ./configure --with-php-config=/opt/bitnami/php/bin/php-config
     make && make install
-#### 4.3 容器  
+#### 5.3 容器  
 | 命令 | 含义 |
 | --- | --- |
 | dockers ps -a | 获取当前节点所有容器 |
@@ -53,6 +59,32 @@
 | docker exec -it <ID/Name> /bin/bash | 进入容器 |
 | docker rm -f <ID/Name> | 删除容器 |
 | docker top <ID/Name> | 显示容器中正在运行的进程 |
+
+
+### 4. linux 安装Docker
+```shell script
+    # 1.卸载旧版本
+    sudo yum remove docker \
+                      docker-client \
+                      docker-client-latest \
+                      docker-common \
+                      docker-latest \
+                      docker-latest-logrotate \
+                      docker-logrotate \
+                      docker-engine
+    
+    # 查询docker安装过的包
+    yum list installed | grep docker
+    # 删除安装包
+    yum remove docker-ce.x86_64 docker-ce-cli.x86_64 -y
+    # 删除镜像/容器等
+    rm -rf /var/lib/docker
+    
+    # 2. 官方安装脚本自动安装
+    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+```
+
 
 ### 3. windows10(家庭版) 安装docker
 #### 3.1 windows10开启Hyper-v

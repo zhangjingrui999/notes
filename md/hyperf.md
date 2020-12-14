@@ -143,6 +143,10 @@
     cd hyperf-skeleton
     # 启动 Hyperf
     php bin/hyperf.php start
+    
+    # 停止进程
+    kill pid
+    # pid 来自 /runtime/hyper.pid
 ```
 #### 2.2 本地
     Hyperf 对系统环境有一些要求，仅可运行于 Linux 和 Mac 环境下

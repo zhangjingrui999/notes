@@ -54,7 +54,7 @@ let router = new vueRouter({
 	routes:[
 		{
 			path: '/home',
-			component: r => require(['../components/Home/HomePage/HomePage'], r)  // 异步加载组件
+			component: r => require(['../components/Index/HomePage/HomePage'], r)  // 异步加载组件
 		},
 	]
 });
