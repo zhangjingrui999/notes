@@ -1,12 +1,7 @@
 [文档](https://hyperf.wiki/2.0/#/README)
-### 4. 配置
-#### 4.1 控制台输出
-```php
-    # config/config.php
-    // 控制台DeBug输出
-    LogLevel::DEBUG,
-```
-#### 4.2 热更新
+
+### 5. 组件
+#### 热更新
 ```shell script
     # 1. cmd 下载插件
     wget -O watch https://gitee.com/hanicc/hyperf-watch/raw/master/watch
@@ -20,6 +15,7 @@
     Control + C
 ```
 ##### 默认配置（打开watch文件，可自行修改）
+```php
     # PHP Bin File PHP程序所在路径（默认自动获取）
     const PHP_BIN_FILE = 'which php';
     # Watch Dir 监听目录（默认监听脚本所在的根目录）
@@ -42,6 +38,100 @@
     const CONSOLE_COLOR_GREEN = "\033[0;32m";
     const CONSOLE_COLOR_YELLOW = "\033[0;33m";
     const CONSOLE_COLOR_BLUE = "\033[0;34m";
+```
+#### [Snowflake](https://hyperf.wiki/2.0/#/zh-cn/snowflake?id=snowflake)
+```shell script
+    # 1. 安装
+    composer require hyperf/snowflake
+
+    # 2. 配置文件
+    php bin/hyperf.php vendor:publish hyperf/snowflake
+
+    return [
+        'begin_second' => MetaGeneratorInterface::DEFAULT_BEGIN_SECOND,
+        RedisMilliSecondMetaGenerator::class => [
+            // Redis Pool
+            'pool' => 'default',
+            // 用于计算 WorkerId 的 Key 键
+            'key' => RedisMilliSecondMetaGenerator::DEFAULT_REDIS_KEY
+        ],
+        RedisSecondMetaGenerator::class => [
+            // Redis Pool
+            'pool' => 'default',
+            // 用于计算 WorkerId 的 Key 键
+            'key' => RedisMilliSecondMetaGenerator::DEFAULT_REDIS_KEY
+        ],
+    ];
+```
+##### 使用
+```php
+<?php
+    use Hyperf\Snowflake\IdGeneratorInterface;
+    use Hyperf\Utils\ApplicationContext;
+    
+    $container = ApplicationContext::getContainer();
+    $generator = $container->get(IdGeneratorInterface::class);
+    
+    $id = $generator->generate();
+
+    $meta = $generator->degenerate($id);
+```
+##### 重写 Meta 生成器
+```php
+<?php
+    declare(strict_types=1);
+    
+    use Hyperf\Snowflake\IdGenerator;
+    
+    class UserDefinedIdGenerator
+    {
+        /**
+         * @var IdGenerator\SnowflakeIdGenerator
+         */
+        protected $idGenerator;
+    
+        public function __construct(IdGenerator\SnowflakeIdGenerator $idGenerator)
+        {
+            $this->idGenerator = $idGenerator;
+        }
+    
+        public function generate(int $userId)
+        {
+            $meta = $this->idGenerator->getMetaGenerator()->generate();
+    
+            return $this->idGenerator->generate($meta->setWorkerId($userId % 31));
+        }
+    
+        public function degenerate(int $id)
+        {
+            return $this->idGenerator->degenerate($id);
+        }
+    }
+    
+    use Hyperf\Utils\ApplicationContext;
+    
+    $container = ApplicationContext::getContainer();
+    $generator = $container->get(UserDefinedIdGenerator::class);
+    $userId = 20190620;
+    
+    $id = $generator->generate($userId);
+```
+
+### 4. 配置
+#### 4.1 控制台输出
+```php
+    # config/config.php
+    // 控制台DeBug输出
+    LogLevel::DEBUG,
+```
+#### 4.2 代理类缓存
+```php
+    # config/config
+    'scan_cacheable' => env('SCAN_CACHEABLE', false)
+
+    # .env
+    SCAN_CACHEABLE=true
+```
 
 ### 3. 路由
 #### 3.1 路由文件(config/routes.php)
@@ -105,7 +195,7 @@
     use Hyperf\HttpServer\Annotation\RequestMapping;
     
     /**
-     * @Controller()
+     * @Controller(prefix="index")
      */
     class IndexController
     {
@@ -121,7 +211,34 @@
         }
     }
 ```
+#### 3.3 Service引用
+##### 3.3.1 依赖自动注入
+```php
+<?php
+    use App\Service\UserService;
 
+    /**
+     * @var UserService
+     */
+    private $userService;
+
+    // 在构造函数声明参数的类型，Hyperf 会自动注入对应的对象或值
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+```
+##### 3.3.2 @Inject注解注入
+```php
+<?php
+    use App\Service\UserService;
+
+    /**
+     * @Inject()
+     * @var UserService
+     */
+    private $userService;
+```
 
 ### 2. 安装
 #### 2.1 docker下开发
