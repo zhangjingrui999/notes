@@ -1,5 +1,171 @@
 [文档](https://hyperf.wiki/2.0/#/README)
 
+### 6. 中间件
+#### 全局中间件
+```php
+<?php
+    # 配置文件
+    # config/autoload/middlewares.php
+    return [
+        // http 对应 config/autoload/server.php 内每个 server 的 name 属性对应的值，该配置仅应用在该 Server 中
+        'http' => [
+            // 数组内配置您的全局中间件，顺序根据该数组的顺序
+            YourMiddleware::class
+        ],
+    ];
+```
+#### 局部中间件
+##### 配置文件
+```php
+<?php
+    # config/routes.php
+    use App\Middleware\FooMiddleware;
+    use Hyperf\HttpServer\Router\Router;
+    
+    // 每个路由定义方法都可接收一个 $options 参数
+    Router::addRoute(['GET', 'POST', 'HEAD'], '/index', [\App\Controller\IndexController::class, 'index'], ['middleware' => [FooMiddleware::class]]);
+    
+    // 该 Group 下的所有路由都将应用配置的中间件
+    Router::addGroup(
+        '/v2', function () {
+            Router::get('/index', [\App\Controller\IndexController::class, 'index']);
+        },
+        ['middleware' => [FooMiddleware::class]]
+    );
+```
+##### 注解中间件
+```php
+<?php
+    # 定义单个中间件
+    use Hyperf\HttpServer\Annotation\AutoController;
+    use Hyperf\HttpServer\Annotation\Middleware;
+    use App\Middleware\FooMiddleware;
+
+    /**
+     * @AutoController()
+     * @Middleware(FooMiddleware::class)
+     */
+    class IndexController
+    {
+        public function index()
+        {
+            return 'Hello Hyperf.';
+        }
+    }
+
+    # 定义多个中间件
+    use Hyperf\HttpServer\Annotation\AutoController;
+    use App\Middleware\FooMiddleware;
+    use App\Middleware\BarMiddleware;
+    use Hyperf\HttpServer\Annotation\Middlewares;
+    use Hyperf\HttpServer\Annotation\Middleware;
+    
+    /**
+     * @AutoController()
+     * @Middlewares({
+     *     @Middleware(FooMiddleware::class),
+     *     @Middleware(BarMiddleware::class)
+     * })
+     */
+    class IndexController
+    {
+        public function index()
+        {
+            return 'Hello Hyperf.';
+        }
+    }
+
+    # 定义方法级别的中间件
+    use App\Middleware\BarMiddleware;
+    use App\Middleware\FooMiddleware;
+    use Hyperf\HttpServer\Annotation\AutoController;
+    use Hyperf\HttpServer\Annotation\Middleware;
+    use Hyperf\HttpServer\Annotation\Middlewares;
+    
+    /**
+     * @AutoController()
+     * @Middlewares({
+     *     @Middleware(FooMiddleware::class)
+     * })
+     */
+    class IndexController
+    {
+    
+        /**
+         * @Middlewares({
+         *     @Middleware(BarMiddleware::class)
+         * })
+         */
+        public function index()
+        {
+            return 'Hello Hyperf.';
+        }
+    }
+```
+##### 中间件相关的代码
+```php
+    # 1. 自动构造 
+    php ./bin/hyperf.php gen:middleware Auth/FooMiddleware
+
+    # 2. 手动编写
+    <?php
+    
+    declare(strict_types=1);
+    
+    namespace App\Middleware\Auth;
+    
+    use Hyperf\HttpServer\Contract\RequestInterface;
+    use Hyperf\HttpServer\Contract\ResponseInterface as HttpResponse;
+    use Psr\Container\ContainerInterface;
+    use Psr\Http\Message\ResponseInterface;
+    use Psr\Http\Message\ServerRequestInterface;
+    use Psr\Http\Server\MiddlewareInterface;
+    use Psr\Http\Server\RequestHandlerInterface;
+    
+    class FooMiddleware implements MiddlewareInterface
+    {
+        /**
+         * @var ContainerInterface
+         */
+        protected $container;
+    
+        /**
+         * @var RequestInterface
+         */
+        protected $request;
+    
+        /**
+         * @var HttpResponse
+         */
+        protected $response;
+    
+        public function __construct(ContainerInterface $container, HttpResponse $response, RequestInterface $request)
+        {
+            $this->container = $container;
+            $this->response = $response;
+            $this->request = $request;
+        }
+    
+        public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+        {
+            // 根据具体业务判断逻辑走向，这里假设用户携带的token有效
+            $isValidToken = true;
+            if ($isValidToken) {
+                return $handler->handle($request);
+            }
+    
+            return $this->response->json(
+                [
+                    'code' => -1,
+                    'data' => [
+                        'error' => '中间件验证token无效，阻止继续向下执行',
+                    ],
+                ]
+            );
+        }
+    }
+```
+
 ### 5. 组件
 #### 热更新
 ```shell script

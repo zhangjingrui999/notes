@@ -309,7 +309,7 @@ foreach ($arr as $key => $value) {
 | --- | --- |
 | $_GET  | 接收地址栏中传递给脚本的参数 |
 | $_POST | 接收表单传过来的POST数据   |
-| $_REQUEST | $_GET \/ $_POST     |
+| $_REQUEST | _GET \/ _POST     |
 | $GLOBALS  | 接收 get post cookie files数组 |
 | $_SERVER['SERVER_NAME']    | 域名 |
 | $_SERVER['SERVER_SOFTWARE']| PHP软件平台  |
@@ -323,6 +323,7 @@ foreach ($arr as $key => $value) {
 | $_SERVER['PHP_SELF']       | 脚本网站路径 | 
 | $_SERVER['HTTP_USER_AGENT']| 客户端浏览器信息 |
 | $_SERVER['REMOTE_ADDR']    | 客户端IP |
+
 ### 10. 系统函数
 #### 10.1 数组键值操作函数
 | 函数 | 含义 |
@@ -336,6 +337,7 @@ foreach ($arr as $key => $value) {
 | array_search(str,$arr) | 搜索指定的值,并返回键 |
 | array_key_exists(str,$arr) | 检查一个键是否在数组中 |
 | array_reverse($arr,[true]) | 数组中的值反排序[键值保持映射] |
+
 #### 10.2 统计数组的元素和唯一性
 | 函数 | 含义 |
 | --- | --- |
@@ -344,6 +346,7 @@ foreach ($arr as $key => $value) {
 | array_unique($arr)    | 删除数组中重复的值 |
 | array_filter($arr)    | 删除数组中值为0,为空的 |
 | array_map(函数名,$arr) | 将回调函数作用到数组值中|
+
 #### 10.3 数组的排序函数(改变原数组)
 | 函数 | 含义 |
 | --- | --- |
@@ -357,6 +360,7 @@ foreach ($arr as $key => $value) {
 | natcasesort($arr) | 忽略大小写,按值自然数升序 |
 | array_multisort($arr,$arr) | 用前数组对后数组进行排序 |
 | usort($arr,funName) | 用户自定义排序 /
+
 #### 10.4 数组截取合并
 | 函数 | 含义 |
 | --- | --- |
@@ -371,12 +375,14 @@ foreach ($arr as $key => $value) {
 | array_intersect_assoc() | 数组交集,考虑键值 |
 | array_diff() | 数组差集 |
 | array_diff_assoc() | 数组差集,考虑键值 |
+
 #### 10.5 数组分割和连接
 | 函数 | 含义 |
 | --- | --- |
 | join($arr) | 把数组连接成字符串 |
 | explode(str,$arr) | 把字符串按 str 分割为数组 |
 | str_split($str,[num]) | 将字符串按[num长度]分割为数组 |
+
 #### 10.6 数组与数据结构(改变原数组)
 | 函数 | 含义 |
 | --- | --- |
@@ -390,6 +396,7 @@ foreach ($arr as $key => $value) {
 | range(str1,str2) | 创建一个包含从 str1 到 str2 之间的元素范围的数组 |
 | array_walk($arr,funName) | 向函数递归传入值 |
 | array_chunk($arr,num) | 将数组分为 num 份,最后一份不足则少 |
+
 #### 10.7 移动数组指针
 | 函数 | 含义 |
 | --- | --- |
@@ -397,6 +404,7 @@ foreach ($arr as $key => $value) {
 | prev() | 移动到上一位 |
 | reset()| 移动到第一位 |
 | end()  | 移动到最后位 |
+
 ### 11. 字符串
     定义 $str = "";
     输出 echo $str;
@@ -406,6 +414,7 @@ foreach ($arr as $key => $value) {
         die($str);      输出后结束脚本
         printf('%s$d%f',$a,$b,$c);          按格式输出
         $str = sprintf('%s%d%f',$a,$b,$c);  不能直接输出,只返回数据
+        
 #### 11.1 去除空格和字符串填补函数
 | 函数 | 含义 |
 | --- | --- |
@@ -414,6 +423,7 @@ foreach ($arr as $key => $value) {
 | trim($str)  | 去除左右空格 |
 | str_pad($str,num,'',STR_PAD_BOTH) | 将''添加num次到$str俩端,默认(STR_PAD_LEFT 左端,STR_PAD_RIGHT 右端) |
 | str_repeat($str,num) | 字符串重复   |
+
 #### 11.2 字符串大小写转换
 | 函数 | 含义 |
 | --- | --- |
@@ -421,6 +431,7 @@ foreach ($arr as $key => $value) {
 | strtolower($str) | 大写转小写 |
 | ucfirst($str)    | 首字母大写 |
 | ucwords($str)    | 单词首字母大写 |
+
 #### 11.3 字符串格式化
 | 函数 | 含义 |
 | --- | --- |
@@ -435,6 +446,7 @@ foreach ($arr as $key => $value) {
 | strcspn() | 返回左字符串的字符不在右字符串中的个数 |
 | count_chars() | 返回字符串中字符的出现频次 |
 | str_word_count() | 返回字符串中的单词总数 |
+
 #### 11.4 字符串的截取
 | 函数 | 含义 |
 | --- | --- |
@@ -446,6 +458,7 @@ foreach ($arr as $key => $value) {
 | strpos($str,'')  | 查找第一次出现的位置 |
 | strrpos($str,'') | 查找最后一次出现的位置 |
 | str_replace('old','new',$str) | 字符串的替换 |
+
 #### 11.5 与html标签相关联的字符串函数
 | 函数 | 含义 |
 | --- | --- |
@@ -461,6 +474,7 @@ foreach ($arr as $key => $value) {
 | strtok($str,$info) | 通过info对字符串进行拆分,需要连续调用 |
 | escapeshellarg() | 单引号转义字符串 |
 | escapeshellcmd() | 转义可能危险的字符 |
+
 #### 11.6 路径处理函数
 | 函数 | 含义 |
 | --- | --- |
@@ -470,6 +484,7 @@ foreach ($arr as $key => $value) {
 | parse_url($str)| URL解析 |
 | parse_str($str)| 把查询字符串解析到变量中 |
 | realpath()     | 将传入的路径转为绝对路径 |   
+
 ### 12. 正则表达式
 #### 12.1 原子(匹配实物的最小单元)
 | 原子 | 含义 |
@@ -485,11 +500,14 @@ foreach ($arr as $key => $value) {
 | \S  | 匹配非空格 |
 | \b  | 匹配边界  |
 | \B  | 匹配非边界|
+
 #### 12.2 转义符
     \. \* \+ \? \| \^ \$ \[\] \{\} \(\)
+    
 #### 12.3 元字符(修饰原子)
     * 0个或多个     + 1个或多个     ? 0个或1个
     | ^ $ \b \B [] [^] {m} {m,n} {m,} ()
+    
 #### 12.4 模式修正符(修饰原子符和元子符)
 | 修正符 | 含义 |
 | --- | --- |
@@ -499,6 +517,7 @@ foreach ($arr as $key => $value) {
 | s | 可匹配换行符 |
 | e | 替换的时候,可以让字符串变成表达式去执行 |
 * e 在7以上版本停用, 改用preg_replace_callback
+
 #### 12.5 正则函数
 | 函数 | 含义 |
 | --- | --- |
@@ -508,6 +527,7 @@ foreach ($arr as $key => $value) {
 | preg_replace_callback($btn,$str,$arr) | 代替7以前的e模式修正符 |
 | preg_split($ptn,$str) | 正则分割 |
 | preg_grep($ptn,$arr)  | 一维数组搜索 |
+
 ```php
 // 手机号码
 $str = '13312345678';

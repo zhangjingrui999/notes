@@ -577,10 +577,10 @@
 > + readme.md    ------> 项目说明文件 
 #### 3.2 文件
 ```html
+<html>
 	<template>
 		<div id="id-name"><div>
 	</template>
-
 	<script>
         import 组件 from '组件路径'
 		export default {
@@ -667,6 +667,7 @@
         /* 普通CSS,加载后的页面均会生效 */
         /* element-ui 原生样式在此才会生效 */
     </style>
+</html>
 ```
 
 ### 2. 插件
