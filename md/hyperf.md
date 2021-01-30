@@ -291,4 +291,3 @@
     
     $id = $generator->generate($userId);
 ```
-

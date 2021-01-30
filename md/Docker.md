@@ -138,7 +138,7 @@
     settings
         Docker Engine
             "registry-mirrors": [
-                "https://vzdxa911.mirror.aliyuncs.com"
+                "https://*****.aliyuncs.com"
             ],
 
 ### 4. linux 安装Docker
