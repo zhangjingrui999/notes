@@ -1,6 +1,7 @@
 ### 1. 环境
 #### 1.1 流程
     客户端 -> 浏览器 -> 网址 -> DNS -> IP -> 端口 -> web服务器 -> PHP脚本 -> PHP解析器 -> 数据库 -> 处理数据 -> 形成HTML文档 -> 浏览器 -> 用户
+    
 #### 1.2 Windows配置
     域名解析文件(C:/windows/system32/drivers/etc/hosts)
         修改此文件可改变域名的解析的IP地址
@@ -12,9 +13,11 @@
                -> net start mysql57    // 启动数据库
 
     我的电脑 -> 右键 -> 管理 -> 服务 -> apache24/mysql57  // 管理apache及数据库等服务项
+    
 ### 2. 变量
 #### 2.1 作用
     灵活 重用
+    
 #### 2.2 变量类型
 | 类型 | 符号 |     |
 | --- | --- | --- |
@@ -26,6 +29,7 @@
 | 对象   | object   | 复合类型 |
 | 资源   | resource | 特殊类型 |
 | null  | null     | 特殊类型 |
+
 #### 2.3 字符串解析变量(单双引号的应用)
     echo "My {$string}!";
     echo "My ".$string."!";
@@ -37,26 +41,33 @@
     双引号中只是解析变量并不会执行表达式，要执行用 . 连接
     单引号和双引号要交叉使用
     单双引号在引用时要用 \ 把特殊性取消掉
+    
 #### 2.4 打印数组
 ```php
     echo "<pre>";
     print_r();
     echo "</pre>>";
 ```
+
 #### 2.5 变量测试
     var_dump(); // 打印 值及值的类型
+    
 #### 2.6 对象定义
     类   class Class_name{}
     对象 $obj = new Class_name();
+    
 #### 2.7 为空
     empty() // 检测变量是否为空 null 0 '0' '' false 0.0 []
     isset() // 检测变量是否存在 undefined null
+    
 #### 2.8 变量类型转换
     gettype();  判断变量类型(不会输出,或用 echo 输出)
+    
 ##### 2.8.1 变量类型自动转换
     字符串 -> 整型   $str='10'; echo($str+20); 30
     整型 -> 字符串   $str=10; echo($str.'20'); 1020
     所有类型 -> 布尔型  自动转换为 0/1
+    
 ##### 2.8.2 变量强制转换
 | 函数 | 含义 |
 | --- | --- |
@@ -66,6 +77,7 @@
 | (string)| 强制转为字符型 |
 | (array) | 强制转为数组 |
 | (object)| 强制转为对象 |
+
 #### 2.9 变量的精确测试
 | 函数 | 含义 |
 | --- | --- |
@@ -79,10 +91,12 @@
 | is_resource() | 是否为资源 0/1 |
 | is_scalar()| 是否为标量 0/1 |
 | is_callable() | 是否为函数 0/1 |
+
 ### 3. 常量
     定义 define(大写字母,值);
     输出 echo 大写字母;
     测试 defined(大写字母);
+    
 #### 3.1 预定义常量
 | 预定义常量 | 含义 |
 | --- | --- |
@@ -90,9 +104,11 @@
 | __FILE__ | 系统绝对路径 |
 | __FUNCTION__ | 函数 |
 | M_PI | 圆周率 |
+
 ### 4. 运算符
 #### 4.1 一元运算符
     ++ -- 自增自减,不会改变bool的值
+    
 #### 4.2 二元运算符
     数学 + - * / %
     逻辑 
@@ -111,9 +127,11 @@ if( $a && ++$b) {
     echo($a.':'.$b);
 }
 ```
+
 #### 4.3 三元运算符
     ... ? true : flase;
     ... ?: flase;
+    
 #### 4.4 运算符优先级(递减,可用()提高优先级)
     一元 ++ --
     数学 + - * / %
@@ -122,6 +140,7 @@ if( $a && ++$b) {
     逻辑 && ||
     三元 ? :  
     赋值 = += -= *= /= %= .=
+    
 ### 5. 流程控制
 ```php
 if(true) {
@@ -168,6 +187,7 @@ goto less;
 
 less:
 ```
+
 ### 6. 函数
 | 函数 | 含义 |
 | --- | --- |
@@ -180,11 +200,13 @@ less:
                 // code  
               }
     函数调用    name();
+    
 #### 6.1 变量作用域
     全局变量    函数外面的变量,只能在函数外使用
     局部变量    函数里面的变量,只能在函数里面使用
     global    可以打通变量作用域使得全局变量和局部变量通用
     static    依附于相同函数多次调用时累计加减
+    
 #### 6.2 函数输出结果
 ```php
 // 函数体内输出
@@ -197,6 +219,7 @@ function f2($i,$j) {
     return $i+$j;
 }
 ```
+
 #### 6.3 参数使用
 ```php
 function show($i,$j=2) {
@@ -209,11 +232,14 @@ function show2(&$i) {
     return $i++;
 }
 ```
+
 #### 6.4 可变参数个数的函数
     func_num_args   实参个数
     func_get_arg    返回某一个实参,必须事实参数组的索引
     func_get_args   返回实参数组
+    
 #### 6.5 回调函数是另一个函数的名字
+
 #### 6.6 变量函数
 ```php
 function show() {
@@ -222,6 +248,7 @@ function show() {
 $str = 'show';
 $str();
 ```
+
 #### 6.7 递归函数
     函数自己调用自己,不可出现递归死循环
     用途
@@ -254,11 +281,13 @@ sum(3) {
 }
 */
 ```
+
 ### 7. 文件包含
     include  当包含文件有问题时,错误级别warning,但不会终止脚本执行
     include_once 只包含一次
     require  当包含文件有问题时,错误级别error,终止脚本执行
     require_once 只包含一次
+    
 ### 8. 数组
 #### 8.1 定义
     $arr = array(1,2,3); 因apache版本兼容,推荐使用
@@ -268,6 +297,7 @@ sum(3) {
         key value
         下标 值
         键   值
+        
 #### 8.2 类型
 #### 8.2.1 维度
     一维  $arr = [1,2,3];
@@ -282,16 +312,19 @@ sum(3) {
                 [1,2,3]
             ]
          ];
+         
 #### 8.2.2 下标
     索引数组    下标为数字
     关联数组    下标为字符串
     混合数组    数字和字符串混合
+    
 #### 8.3 取/赋值
     echo $arr[2][2][1];
     
     $arr[2][2][0] = 'linux';
     1. 无下标,系统默认下标从0开始递增
     2. 下标允许为空
+    
 #### 8.4 遍历
 ```php
 for(;;) {}
@@ -304,6 +337,7 @@ foreach ($arr as $key => $value) {
     echo "{$x} ==> {$y}";
 }
 ``` 
+
 ### 9. 超全局数组
 | 数组 | 含义 |
 | --- | --- |
@@ -323,6 +357,7 @@ foreach ($arr as $key => $value) {
 | $_SERVER['PHP_SELF']       | 脚本网站路径 | 
 | $_SERVER['HTTP_USER_AGENT']| 客户端浏览器信息 |
 | $_SERVER['REMOTE_ADDR']    | 客户端IP |
+
 ### 10. 系统函数
 #### 10.1 数组键值操作函数
 | 函数 | 含义 |
@@ -336,6 +371,7 @@ foreach ($arr as $key => $value) {
 | array_search(str,$arr) | 搜索指定的值,并返回键 |
 | array_key_exists(str,$arr) | 检查一个键是否在数组中 |
 | array_reverse($arr,[true]) | 数组中的值反排序[键值保持映射] |
+
 #### 10.2 统计数组的元素和唯一性
 | 函数 | 含义 |
 | --- | --- |
@@ -344,6 +380,7 @@ foreach ($arr as $key => $value) {
 | array_unique($arr)    | 删除数组中重复的值 |
 | array_filter($arr)    | 删除数组中值为0,为空的 |
 | array_map(函数名,$arr) | 将回调函数作用到数组值中|
+
 #### 10.3 数组的排序函数(改变原数组)
 | 函数 | 含义 |
 | --- | --- |
@@ -357,6 +394,7 @@ foreach ($arr as $key => $value) {
 | natcasesort($arr) | 忽略大小写,按值自然数升序 |
 | array_multisort($arr,$arr) | 用前数组对后数组进行排序 |
 | usort($arr,funName) | 用户自定义排序 /
+
 #### 10.4 数组截取合并
 | 函数 | 含义 |
 | --- | --- |
@@ -371,12 +409,14 @@ foreach ($arr as $key => $value) {
 | array_intersect_assoc() | 数组交集,考虑键值 |
 | array_diff() | 数组差集 |
 | array_diff_assoc() | 数组差集,考虑键值 |
+
 #### 10.5 数组分割和连接
 | 函数 | 含义 |
 | --- | --- |
 | join($arr) | 把数组连接成字符串 |
 | explode(str,$arr) | 把字符串按 str 分割为数组 |
 | str_split($str,[num]) | 将字符串按[num长度]分割为数组 |
+
 #### 10.6 数组与数据结构(改变原数组)
 | 函数 | 含义 |
 | --- | --- |
@@ -390,6 +430,7 @@ foreach ($arr as $key => $value) {
 | range(str1,str2) | 创建一个包含从 str1 到 str2 之间的元素范围的数组 |
 | array_walk($arr,funName) | 向函数递归传入值 |
 | array_chunk($arr,num) | 将数组分为 num 份,最后一份不足则少 |
+
 #### 10.7 移动数组指针
 | 函数 | 含义 |
 | --- | --- |
@@ -397,6 +438,7 @@ foreach ($arr as $key => $value) {
 | prev() | 移动到上一位 |
 | reset()| 移动到第一位 |
 | end()  | 移动到最后位 |
+
 ### 11. 字符串
     定义 $str = "";
     输出 echo $str;
@@ -406,6 +448,7 @@ foreach ($arr as $key => $value) {
         die($str);      输出后结束脚本
         printf('%s$d%f',$a,$b,$c);          按格式输出
         $str = sprintf('%s%d%f',$a,$b,$c);  不能直接输出,只返回数据
+        
 #### 11.1 去除空格和字符串填补函数
 | 函数 | 含义 |
 | --- | --- |
@@ -414,6 +457,7 @@ foreach ($arr as $key => $value) {
 | trim($str)  | 去除左右空格 |
 | str_pad($str,num,'',STR_PAD_BOTH) | 将''添加num次到$str俩端,默认(STR_PAD_LEFT 左端,STR_PAD_RIGHT 右端) |
 | str_repeat($str,num) | 字符串重复   |
+
 #### 11.2 字符串大小写转换
 | 函数 | 含义 |
 | --- | --- |
@@ -421,6 +465,7 @@ foreach ($arr as $key => $value) {
 | strtolower($str) | 大写转小写 |
 | ucfirst($str)    | 首字母大写 |
 | ucwords($str)    | 单词首字母大写 |
+
 #### 11.3 字符串格式化
 | 函数 | 含义 |
 | --- | --- |
@@ -435,6 +480,7 @@ foreach ($arr as $key => $value) {
 | strcspn() | 返回左字符串的字符不在右字符串中的个数 |
 | count_chars() | 返回字符串中字符的出现频次 |
 | str_word_count() | 返回字符串中的单词总数 |
+
 #### 11.4 字符串的截取
 | 函数 | 含义 |
 | --- | --- |
@@ -446,6 +492,7 @@ foreach ($arr as $key => $value) {
 | strpos($str,'')  | 查找第一次出现的位置 |
 | strrpos($str,'') | 查找最后一次出现的位置 |
 | str_replace('old','new',$str) | 字符串的替换 |
+
 #### 11.5 与html标签相关联的字符串函数
 | 函数 | 含义 |
 | --- | --- |
@@ -461,6 +508,7 @@ foreach ($arr as $key => $value) {
 | strtok($str,$info) | 通过info对字符串进行拆分,需要连续调用 |
 | escapeshellarg() | 单引号转义字符串 |
 | escapeshellcmd() | 转义可能危险的字符 |
+
 #### 11.6 路径处理函数
 | 函数 | 含义 |
 | --- | --- |
@@ -469,7 +517,8 @@ foreach ($arr as $key => $value) {
 | pathinfo($str) | 路径解析 |
 | parse_url($str)| URL解析 |
 | parse_str($str)| 把查询字符串解析到变量中 |
-| realpath()     | 将传入的路径转为绝对路径 |   
+| realpath()     | 将传入的路径转为绝对路径 |
+
 ### 12. 正则表达式
 #### 12.1 原子(匹配实物的最小单元)
 | 原子 | 含义 |
@@ -485,11 +534,14 @@ foreach ($arr as $key => $value) {
 | \S  | 匹配非空格 |
 | \b  | 匹配边界  |
 | \B  | 匹配非边界|
+
 #### 12.2 转义符
     \. \* \+ \? \| \^ \$ \[\] \{\} \(\)
+    
 #### 12.3 元字符(修饰原子)
     * 0个或多个     + 1个或多个     ? 0个或1个
     | ^ $ \b \B [] [^] {m} {m,n} {m,} ()
+    
 #### 12.4 模式修正符(修饰原子符和元子符)
 | 修正符 | 含义 |
 | --- | --- |
@@ -499,6 +551,7 @@ foreach ($arr as $key => $value) {
 | s | 可匹配换行符 |
 | e | 替换的时候,可以让字符串变成表达式去执行 |
 * e 在7以上版本停用, 改用preg_replace_callback
+
 #### 12.5 正则函数
 | 函数 | 含义 |
 | --- | --- |
@@ -541,6 +594,7 @@ for($i=0;$i<6;$i++) {
 }
 echo $str;
 ```
+
 ### 13. 数学函数
 | 函数 | 含义 |
 | --- | --- |
@@ -568,6 +622,7 @@ echo $str;
 | setlocale() | 设置时间环境 zh_CN.b3212简体中文 |
 | strftime() | 根据时间环境,格式化本地日期和时间 |
 | getlastmod() | 返回该页面的最后修改时间和日期信息,配合date()使用 |
+
     a - "am" 或是 "pm"
     A - "AM" 或是 "PM"
     d - 几日，bai二位数字，若不足二位则前面du补零; 如: "01" 至 "31"
@@ -591,6 +646,7 @@ echo $str;
     Y - 年，四位数字; 如: "1999"
     y - 年，二位数字; 如: "99"
     z - 一年中的第几天; 如: "0" 至 "365"
+    
 ```php
 <?php
     $year = $_GET['Y'] ?: date('Y');
@@ -660,19 +716,23 @@ echo $str;
 </body>
 </html>
 ```
+
 #### 14.1 更改时区
     php.ini
     date.timezone = PRC
     重启web服务器
+    
 #### 14.2 不修改配置文件
     查看 ini_get()
     修改 ini_set()
     修改时区
         date_default_timezone_set('PRC');
         date_default_timezone_get();
+        
 ### 15. 错误级别
 #### 15.1 默认的报错设置项
     error_reporting = E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
+    
 #### 15.2 报错级别
 | 设置项 | 含义 |
 | --- | --- |
@@ -681,6 +741,7 @@ echo $str;
 | E_WARNING | 警告 |
 | E_ERROR | 错误 |
 | E_PARSE | 语法 |
+
 #### 15.3 PHP脚本执行过程
     1. 语法检测
         parse
@@ -688,10 +749,12 @@ echo $str;
         notice
         warning
         error
+        
 #### 15.4 函数
 | 函数 | 含义 |
 | --- | --- |
 | error_get_last() | 返回最后出现的错误类型、消息、文件、行号|
+
 ### 16. 图片处理
 ```php
 // 1. 创建画布资源
@@ -770,6 +833,7 @@ echo $str;
 // 图片水印
     imagecopy($底图,$水印图,$水印X轴坐标,$水印Y轴坐标,$坐标点在水印图的X轴坐标,$坐标点在水印图的Y轴坐标,$水印图画布宽,$水印图画布高);
 ```
+
 #### 16.1 图片缩放
 ```php
 function thumb($srcimg,$pre,$dstw,$dsth) {
@@ -789,6 +853,7 @@ function thumb($srcimg,$pre,$dstw,$dsth) {
 }
 thumb('img/cn.jpg','md_',500,500);
 ```
+
 ### 17. [文件处理函数](https://www.w3school.com.cn/php/php_ref_filesystem.asp)
 | 函数 | 含义 |
 | --- | --- |
@@ -824,6 +889,7 @@ thumb('img/cn.jpg','md_',500,500);
 | frof() | 判断文件是否到达 EOF末尾 |
 | readdir() | 返回目录内容 |
 | closedir()| 关闭目录 |
+
 ```php
 // 遍历目录
 $od  = opendir($dir);
@@ -836,6 +902,7 @@ closedir($od);
 delDir(); // [递归]删除目录
 copyDir();// [递归]复制目录
 ```
+
 #### 17.1 文件上传
     单图上传表单
         method = 'post';
@@ -847,12 +914,14 @@ copyDir();// [递归]复制目录
         表单允许的最大值        post_max_size = 8M;       // 可在pnp.ini中修改
         文件上传框允许的最大值   upload_max_filesize = 2M; // 可在php.ini中修改
         图片或文件不能大于1M    $max = 1 * 1024 * 1024;
+        
 #### 17.2 多文件上传
     表单  <input type='file' name='file[]' accept='image/*' multiple>
     上传脚本
         for($i=0;$i<$tot;$i++) {
             $src = $_FILES['file']['tmp_name'][$i];
         }
+        
 #### 17.3 文件上传错误
 | 错误 | 含义 |
 | --- | --- |
@@ -865,6 +934,7 @@ copyDir();// [递归]复制目录
 | 7 | 无法写入到磁盘 |
 | 8 | PHP配置错误 |
 | $FILES为空数组 | 文件大小超过POST限制 |
+
 #### 17.4 文件下载
 ```php
 header("content-type:application/octet-stream");
@@ -872,11 +942,13 @@ headre("content-disposition:attachment;filenname={$img}");
 header("content-length:{$size}");
 readfile($file);
 ```
+
 #### 17.5 函数
 | 函数 | 含义 |
 | --- | --- |
 | is_uploaded_file()| 判断是否已上传文件 |
 | move_uploaded_file() | 移动已上传文件 |
+
 ### 18. 网页数据采集
 #### 18.1 集体采集
 ```php
@@ -884,6 +956,7 @@ readfile($file);
     $html = file_get_contents($file);
     file_get_contents('a.html',$html);
 ```
+
 #### 18.2 单独采集
 ```php
     $file = "www.baidu.com";
@@ -894,12 +967,16 @@ readfile($file);
     print_r($ms[]);
     echo "</pre>";
 ```
+
 ### 19. OOP 面向对象
     OOP(Object_Oriented Programming) 面向对象式编程语言
+    
 #### 19.1 特性
     封装  继承  多态
+    
 #### 19.2 目标
     重用  灵活  扩展
+    
 #### 19.3 类定义
 ```php
 class Person{
@@ -915,6 +992,7 @@ class Person{
 // 产生对象
 $obj = new Person();
 ```
+
 #### 19.4 类命名规范(严格驼峰式)
 ```php
 class Person 
@@ -942,10 +1020,13 @@ echo $obj->name;
 echo '<br>';
 $obj->say();
 ```
+
 #### 19.5 类的组成成员
     属性(变量)  方法(函数)
+    
 #### 19.6 对项链
     $obj->say()->eat()->sleep();
+    
 #### 19.7 类继承特性
     1. 父类(person)
         class Person{}
@@ -954,6 +1035,7 @@ $obj->say();
         {
             parson::__construct();
         }
+        
 #### 19.8 类封装特性
     1. public   公开的
         子类可以访问
@@ -964,10 +1046,12 @@ $obj->say();
     3. private   私有的
         子类不可访问
         类外不可访问
+        
 #### 19.9 抽象方法(没有方法体的方法)
     abstract public function show();
     当子类继承父类后,即使子类没有完善,也没有错误
     当子类完善抽象方法后,就能使用这个方法
+    
 #### 19.10 接口(只含有抽象方法的类)
 ```php
 //  当父类为一个接口时,子类必须完全实现父类的功能,当然子类可以添加新的方法
@@ -983,6 +1067,7 @@ $obj->say();
         public function play() {};
     }
 ```
+
 #### 19。11 多态
     因为函数在使用类或对象时可以设置参数类型,而把一批对象区别对待
     可将没有继承父类的子类挡住
@@ -1013,6 +1098,7 @@ $obj->say();
     }
     Useusb($pan);
 ```
+
 #### 辅助函数
 | 函数 | 含义 |
 | --- | --- |
@@ -1028,6 +1114,7 @@ $obj->say();
 | is_a($obj,$claName)| 判断对象是否和类有关系 |
 | is_subclass_of($obj,$claName) | 判断对象是否类的子类实例化 |
 | method_exists($obj,$fun) | 判断对象中是否有指定方法 |
+
 ### 20. 魔术方法(自动调用)
 | 方法 | 含义 |
 | --- | --- |
@@ -1041,6 +1128,7 @@ $obj->say();
 | __unset     | 当删除无权限/不存在的方法 |
 | __autoload()| 全局自动引用 |
 | __clone() | 克隆类时执行 |
+
 ### 21. 关键字
     const   类常量,可以修饰属性,类似于define
     final   最终版本,后面的类的方法无法对此类/方法进行修改
@@ -1048,7 +1136,8 @@ $obj->say();
     clone   克隆一个对象并继承属性值
     namespace 命名空间,防止类同名覆盖
     instanceof 判断一个对象是否为类的实例、类的子类、某个特定接口
-#### 21.1 命名空间
+    
+#### 22 命名空间
     namespace home;
     必须写到最前面,前面不能有任何形式的输出,不能有任何PHP代码
     一个文件包含多个文件,多个文件中会存在函数名、类名、变量名冲突的问题
@@ -1062,6 +1151,7 @@ $obj->say();
         限定名称     Sub\HOST;
     绝对空间(完全限定名称)
         \Sub\HOST;
+        
 ```php
 <?php
 namesapce think;
@@ -1078,7 +1168,81 @@ class Think
     echo Person::$pass; // 可直接调用方法
 }
 ```
-### 21. PDO操作MySql
+
+### 23. 绝对/相对目录
+#### 23.1 PHP
+    绝对目录
+        C:\appache\www\PHP\index.php
+    相对目录
+        index.php    当前目录
+        ./index.php  当前目录
+        ../index.php 上级目录
+        
+#### 23.2 HTML
+    绝对目录
+        /html/index.jpg
+        /html/index.js
+        /html/index.css
+    相对目录
+        index.jpg       当前目录
+        ./index.jpg     当前目录
+        ../index.jpg    上级目录
+        
+### 24. 动态语言特征
+    函数 
+    类
+    常量
+        const HOST = '132';
+        constant('HOST');
+        
+### 25. PDO类
+    PDO     php data object     php数据对象,php数据库抽象层
+    DSN     data source name    数据源名称
+    query()     查询操作    $obj=$pdo->query($sql);
+    exec()      增删改查    $obj=$pdo->exex($sql);
+    lastInserId()   返回新增数据ID
+    errorCode() 获取跟数据库句柄上一次操作相关的SQLSTATE $pdo->errorCode();
+        若上一次操作正确,则输出 00000
+        若上一次操作错误,则输出 42s02
+    errorInfo() 错误信息
+    beginTransaction();
+    commit()    事务提交
+    rollBack()  事务回滚
+    set(get)Attribute() 设置/得到全局属性
+    
+#### 25.1 PDO对象实例化
+    $pdo = new PDO('mysql:host=localhost;dbname=mydb','root','root');
+    
+#### 25.2 设置字符集
+##### 25.2.1 服务器、数据库、表的字符集
+    character-set-sever = utf8
+    server Characterset: utf8
+    Db Characterset: utf8
+    
+##### 25.2.2 要求的客户端字符集和连接字符集
+    default-character-set = utf8
+    Client Characterset: utf8
+    Conn. characterset: urf8
+    
+#### 25.3 Statement类(预处理类)
+    在PDO主类中有一 prepave();专门用来得到一个预处理对象
+| 函数 | 含义 |
+| --- | --- |
+| execute() | 执行一个预处理语句 |
+| rowCount()| 得到影响行数 |
+| columnCount() | 得到结果集中的列数 |
+| fetch()       | 得到结果集中第一条的数据 |
+| fetchAll()    | 得到查询结果集中所有数据 |
+| fetchColumn() | 从结果集中的下一行返回单独的一列 |
+| bindValue()   | 处理预处理,使其更灵活 |
+
+#### 25.4 预处理机制
+    1. 速度: 第一次预先准备好一条sql语句,后面执行相同sql的情况则不需要重复请求发送
+    2. 安全: 因速度的特点,减少了sql请求的机会,从而减少了危险的可能
+    3. 灵活: 预处理绑值
+    
+
+#### 25.5 PDO操作MySql
 ```php
 // 1.连接mysql
     // new PDO('数据库地址=IP,数据库名=数据库名字','用户名','密码');
@@ -1093,73 +1257,10 @@ class Think
 // 4.处理结果集
     $rows = $res->fetchAll(PDO::FETCH_ASSOC);
 ```
-#### 21.4 
-### 22. 绝对/相对目录
-#### 22.1 PHP
-    绝对目录
-        C:\appache\www\PHP\index.php
-    相对目录
-        index.php    当前目录
-        ./index.php  当前目录
-        ../index.php 上级目录
-#### 22.2 HTML
-    绝对目录
-        /html/index.jpg
-        /html/index.js
-        /html/index.css
-    相对目录
-        index.jpg       当前目录
-        ./index.jpg     当前目录
-        ../index.jpg    上级目录
-### 23. 动态语言特征
-    函数 
-    类
-    常量
-        const HOST = '132';
-        constant('HOST');
-### 24. PDO类
-    PDO     php data object     php数据对象,php数据库抽象层
-    DSN     data source name    数据源名称
-    query()     查询操作    $obj=$pdo->query($sql);
-    exec()      增删改查    $obj=$pdo->exex($sql);
-    lastInserId()   返回新增数据ID
-    errorCode() 获取跟数据库句柄上一次操作相关的SQLSTATE $pdo->errorCode();
-        若上一次操作正确,则输出 00000
-        若上一次操作错误,则输出 42s02
-    errorInfo() 错误信息
-    beginTransaction();
-    commit()    事务提交
-    rollBack()  事务回滚
-    set(get)Attribute() 设置/得到全局属性
-#### 24.1 PDO对象实例化
-    $pdo = new PDO('mysql:host=localhost;dbname=mydb','root','root');
-#### 24.2 设置字符集
-##### 24.2.1 服务器、数据库、表的字符集
-    character-set-sever = utf8
-    server Characterset: utf8
-    Db Characterset: utf8
-##### 24.2.2 要求的客户端字符集和连接字符集
-    default-character-set = utf8
-    Client Characterset: utf8
-    Conn. characterset: urf8
-#### 24.3 Statement类(预处理类)
-    在PDO主类中有一 prepave();专门用来得到一个预处理对象
-| 函数 | 含义 |
-| --- | --- |
-| execute() | 执行一个预处理语句 |
-| rowCount()| 得到影响行数 |
-| columnCount() | 得到结果集中的列数 |
-| fetch()       | 得到结果集中第一条的数据 |
-| fetchAll()    | 得到查询结果集中所有数据 |
-| fetchColumn() | 从结果集中的下一行返回单独的一列 |
-| bindValue()   | 处理预处理,使其更灵活 |
-
-#### 24.4 预处理机制
-    1. 速度: 第一次预先准备好一条sql语句,后面执行相同sql的情况则不需要重复请求发送
-    2. 安全: 因速度的特点,减少了sql请求的机会,从而减少了危险的可能
-    3. 灵活: 预处理绑值
-### 25. PHP异常捕捉技术
+    
+### 26. PHP异常捕捉技术
     异常抛出点开始会阻止后方的执行(try中)
+    
 ```php
 try {
     // 检测程序是否会抛出异常错误
@@ -1185,8 +1286,9 @@ try {
     // 事务处理: 回滚并结束 rollBack
 }
 ```
-### 26. 多页面共享
-#### 26.1 Cookie
+
+### 27. 多页面共享
+#### 27.1 Cookie
     cookie数据是由服务器通过setcookie设置或存在客户端浏览器内部
     客户端每次访问该网站任何一个页面时都会带上自己的cookie数据
     服务器每接收到客户端到来的cookie数据,会第一时间放到自己的$_COOKIE数组中
@@ -1199,7 +1301,8 @@ try {
 // cookie删除                                           
   setcookie('name','',time()-1,'/');             
 ```   
-#### 26.2 Session
+
+#### 27.2 Session
     客户端访问服务器,先通过 session_start 检测卡号
     if(有卡){
         直接去读取卡号的数据并读入到$_SESSION数组中,
@@ -1227,6 +1330,7 @@ try {
     // 销毁服务器上对应的session数据
         session_destroy();
 ```
+
 ### heredoc文本输出
     开始标识符必须有 <<<
     开始和结束标识符必须相同,且可自定义
@@ -1238,6 +1342,7 @@ echo <<<EXCERPT
             <span>7879</span>
 EXCERPT;
 ```
+
 ### Nowdoc 文本输出
     开始标识符必须有 <<<
     开始表示符用单引号包含
@@ -1250,25 +1355,30 @@ echo <<<'EXCERPT'
             <span>$a</span>
 EXCERPT;
 ```
+
 ### 程序执行函数
 #### exec()
     执行服务器脚本
     $arr = exec('**.pl',$array);
     foreach($array)
+    
 #### system()
     linux   system('ls -1 ./**/')'
             system('**.pl',$array);
     windows system('dir .\**\');
+    
 #### passthru() 返回二进制输出
     GIF转PNG
     header('ContentType:image/png');
     passthru('giftopnm cover.gif | pnmtopng > cover.png'); 
 * [图像包](http://netpbm.sourceforge.net)
+
 #### \` ` 执行shell命令
     print('%s',`date`); // 2020-*-* *:*:*
     
     shell_exec() 代替 ``
         print('%s',shell_exec('date')); // 2020-*-* *:*:*
+        
 ### Filter验证扩展
 | 值 | 含义 |
 | --- | --- |
@@ -1285,18 +1395,21 @@ $ipAddress = '192.168.0.1';
 if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
 {}
 ```
+
 ### DNS
 | 函数 | 含义 |
 | --- | --- |
 | checkdnsrr(hostname,[type]) | 判断域名是否存在 |
 | dns_get_record(hostname,[DNS_*]) | 返回域名相关的数组 |
 | getmxrr(hostname,$arr) | 获取域名所指定主机的MX记录 |
+
 ### 服务
 | 函数 | 含义 |
 | --- | --- |
 | getservbyname("http",("tcp" \| "udp")) | 获取服务端口 |
 | getservbyport("80",("tcp" \| "udp")) | 获取端口服务名 |
 | fsockopen(hostname,端口) | 建立套接字连接 |
+
 ```php
 // 套接字链接请求
         $hostname = 'www.baidu.com';
@@ -1339,6 +1452,7 @@ if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
             }
         }
 ```
+
 ### 邮件
 | ini设置 | 值 | 含义 |
 | --- | --- | --- |
@@ -1347,9 +1461,11 @@ if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
 | sendmail_paht | string | 设置到 sendmail 二进制程序的路径,(UNIX) |
 | smtp_port | 25 | 端口 |
 | mail.force_extra_paranmeters | string | 传递额外的参数 |
+
 ```php
     mail('jieshou@**.com',"subject",'body',"From:send@***.com\r\n");
 ```
+
 ### 常见网络任务
 #### 连接服务器
 ```php
@@ -1367,6 +1483,7 @@ if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
     // 杀死任务
     system("killall -q ping");
 ```
+
 #### 创建端口扫描器
 ```php
     $target = "www.example.com";
@@ -1377,6 +1494,7 @@ if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
     // 杀死任务
     system("killall -q namp");
 ```
+
 #### 创建子网转换器
 ```php
     if (isset($_POST['submit']))
@@ -1406,6 +1524,7 @@ if(filter_var($ipAddress,FILTER_VALIDATE_IP,FILTER_VALIDATE_IPV6))
         echo "</u1>" ;
     }
 ```
+
 #### 测试用户带宽
 ```php
     // 检索要发送给用户的数组

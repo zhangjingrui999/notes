@@ -2,9 +2,11 @@
 #### 优点 
     1.快速缓存
     2.跨域登录
+    
 #### 缺点
     1.复杂的数据存取的操作
     2.不能永久保存数据
+    
 #### 安装
 ##### window下如何安装memcache服务器
     安装
@@ -16,7 +18,8 @@
     停止
         memcached.exe -d stop
     调优安装
-        "C:\memcache\memcached.exe" -m 2048 -u root -l 192.168.20.2 -p 10000 -d runservice 
+        "C:\memcache\memcached.exe" -m 2048 -u root -l 192.168.20.2 -p 10000 -d runservice
+        
 #### linux下如何安装memcache服务器
     安装
         ./configure && make && make install
@@ -24,27 +27,34 @@
         memcache -d -m 2048 -u root -l 192.168.20.1 -p 10000
     停止
         pkill memcached
+        
 ### 查看memcache服务状态
 #### windows
     1.查端口 netstat -ano|find “10000”
     2.查进程 tasklist|find “memcache”
+    
 #### linux
     1.查端口 netstat -tunpl |grep 10000
     2.查进程 pstree|grep memcache
+    
 ### 命令
 #### 增
     set name 0 3600 5
     user1
+    
 #### 查
     stats
     get name
     stats items
     stats cachedump 1 0
+    
 #### 删
     delete name
+    
 #### 改
     replace name 0 3600 4
     user
+    
 ### php安装memcache模块
 #### window
     1.把php_memcache.dll拷贝到php中ext扩展模块包中
@@ -56,6 +66,7 @@
     phpinfo();
     ?>
     5.ctrl+f查找memcache扩展
+    
 #### linux
     1.安装memcache扩展包(c语言)
     1)/usr/local/php/bin/phpize
@@ -66,6 +77,7 @@
     编译
     4)make install
     安装
+    
 ### php下操作memcache
     1.连接memcache服务器
         $mem=new Memcache;
@@ -82,6 +94,7 @@
         $arr=$mem->getStats();
     7.清空
         $mem->flush();
+        
 ### 用法
 #### php在用户登录时把session保存到一个共享的memcache服务器上
     1.session.save_handler = memcache

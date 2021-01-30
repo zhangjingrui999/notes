@@ -3,6 +3,7 @@
     t1.frm : 8594 -> 8594
     t2.MYD : 0    -> 200
     t3.MYI : 1024 -> 2048
+    
 #### 1.2 innodb
     stu.frm : 8594 -> 8594
     stu.idb : 98304-> 98304
@@ -13,6 +14,7 @@
         字段     索引      ibdatal     索引      字段
                 部分数据    公共区      部分数据
     OPTIMIIE    TABLE   TABLE.name  // 可压缩ibdatal空间
+    
 ### 2. mysql基本(?show 获取sql命令帮助)
 | 命令 | 含义 |
 | --- | --- |
@@ -33,6 +35,7 @@
 | drop table table_name; | 删除表 |
 | drop database database_name; | 删除数据库 |
 | exit | 退出数据库 |
+
 ### 3. 表字段类型
 #### 3.1 数值
     tinyint
@@ -59,6 +62,7 @@
     数值提示
         后面圆括号的数字不是最大长度, 是zerofill打开的情况下, 不够规定的长度则左侧补0
         int类型数字大小只受系统决定, 默认情况下: -2亿 到 2亿, 无符号: 0 到 4亿
+        
 #### 3.2 字符串
     char(M)
         长度 0 -- 1255
@@ -82,6 +86,7 @@
     字符串提示
         char(250)类型必须是固定长度, 存储空间为250B
         varchar(250)类型是固定长度, 也可以是可变长度, 存储空间为实际长度+1
+        
 #### 3.3 日期和时间(int)
     系统默认是有日期类型, 比如: date
     实际中因为日期和时间要通用, 所以统一使用int类型
@@ -97,29 +102,29 @@
         [current_timestamp] 默认当前时间
         
 ### 4. mysql 字段管理
-* 增
-
+#### 增
 | 命令 | 含义 |
 | --- | --- |
 | after table table_name add 字段名 属性; | 新增字段 |
 | after table table_name add 字段名 属性 first; | 在最前面插入一个字段 |
 | after table table_name add 字段名 属性 after 某字段; | 在某字段后面新增字段 |
-* 删
 
+#### 删
 | 命令 | 含义 |
 | --- | --- |
 | alter table table_name drop 字段名; | 删除字段 |
-* 改
 
+#### 改
 | 命令 | 含义 |
 | --- | --- |
 | alter table table_name change 字段名 新字段名 属性; | 修改字段名及属性 |
 | alter table table_name modify 字段名 属性; | 修改属性 |
-* 查
 
+#### 查
 | 命令 | 含义 |
 | --- | --- |
 | desc table_name; | 查看字段属性 |
+
 ### 5. 字段属性
 | 属性 | 含义 |
 | --- | --- |
@@ -129,6 +134,7 @@
 | null     | 字段值允许为空 |
 | nut null | 字段值不允许为空 |
 | auto_increment | 主键值自增, 但须先给字段加主键 |
+
 ```mysql
     create table table_name(
         name varchar(20) not null,
@@ -136,25 +142,23 @@
         age tinyint unsigned not null
     );
 ```
-### 6. 索引管理(词典=索引值)<加快检索速度>
-* 主键索引(PRI 内容唯一索引)
 
+### 6. 索引管理(词典=索引值)<加快检索速度>
+#### 主键索引(PRI 内容唯一索引)
 | 命令 | 含义 |
 | --- | --- |
 | alter table table_name add primary key(id); | 添加 |
 | alter table table_name drop primary key; | 删除 |
 | desc table_name; | 查看 |
 
-* 唯一索引(UNI)
-
+#### 唯一索引(UNI)
 | 命令 | 含义 |
 | --- | --- | 
 | alter table table_name add unique uni_字段; | 添加 |
 | alter table table_name drop index uni_字段; | 删除 |
 | desc table_name;| 查看 |    
 
-* 普通索引(MUL)
-
+#### 普通索引(MUL)
 | 命令 | 含义 |
 | --- | --- |
 | alter table table_name add index ind_字段; | 添加 |
@@ -178,6 +182,7 @@ create table table_name(
     DML 数据操作语言 insert update delete
     DQL 数据查询语言 select
     DCL 数据控制语言 gront commit rollback
+    
 ### 8. SQL 简单操作
     * 增 insert
         insert into table_name(name) values('user');
@@ -235,6 +240,7 @@ create table table_name(
                     select * from table_name limit 3;
                 从第二个开始取三条
                     select * from table_name limit 1,3;
+                    
 ### 9. mysql 常用函数
 | 函数 | 含义 | 范例 |
 | --- | --- | --- |
@@ -246,6 +252,7 @@ create table table_name(
 | max()   | 最大值 | select max(id) from table_name;|
 | min()   | 最小值 | select min(id) from table_name;|
 | group by| 分组聚合| select class,sum(if(score>=60,1,0)) yes,sum(if(score<60,1,0)) no from table_name group by class; |
+
 ### 10. 多表查询
     * 普通查询(常用)
         select student.id,student.name,c.username from student,class where student.class_id = class.id;
@@ -261,6 +268,7 @@ create table table_name(
         右链接(已被左链接代替) right join on
             select student.id,student.name,if(class.name is not null,class.name,'none_class') name from class
                 right join student on student.class_id = class.id;
+                
 ### 11. 多表之间的关系
 * 一对一
 * 一对多

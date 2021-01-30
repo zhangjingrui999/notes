@@ -19,18 +19,22 @@
 > > + tpl                跳转模板
 > >   convention.php     核心配置
 > >   helper.php
+
 ### 2. MVC原理
     M model 模型 完成实际的业务逻辑和数据封装返回数据
     V view  视图 可视化页面
     C controller 控制器
     VC 开发页面
     MC 开发接口
+    
 #### 2.1 入口文件
     http://www.*.com/public/index.php/index/index/index
     协议  /网站      /入口文件夹/入口文件 /模块  /控制器/方法
+    
 #### 2.2 其他
     namespace    命名空间 解决函数和类名冲突的问题
     use app/index/{index,login as logins}    调用类 {}多个引用  as别名
+    
 ### 3. 命名规范
     目录,文件
         目录使用小写+下划线
@@ -51,6 +55,7 @@
         小写字母+下划线
         字段名不以下划线开头
         不建议使用驼峰法和中文作数据表,字段命名
+        
 ### 4. 方法调用
 #### 4.1 跨方法
 ```php
@@ -62,6 +67,7 @@ public function index()
     action('add'); //助手函数
 }
 ```
+
 #### 4.2 跨控制器调用
 ```php
 use app\index\controller\Index as index;
@@ -78,6 +84,7 @@ public function kkzq()
     $obj->update();
 }
 ```
+
 #### 4.3 跨模块调用
 ```php
 use \app\index\controller\index as IndexIndex;
@@ -94,19 +101,23 @@ public function index()
     $obj->del();
 }
 ```
+
 ### 5. 配置
 #### 5.1 配置格式
     []
         新建配置文件
             return [];
+            
 #### 5.2 配置类型
 ##### 5.2.1 惯例配置
     tp\thinkphp\convention.php
+    
 ##### 5.2.2 应用配置
     1. 对配置文件进行分目录配置
     2. 位置
         tp\addlication\database.php
         tp\applicarion\extra
+        
 ##### 5.2.3 场景配置
     在不同环境下进行开发的配置
     在 tp\application\config.php
@@ -114,12 +125,15 @@ public function index()
         'app_status' => 'office'
     在 tp\application\建立 home.php
                           office.php
+                          
 ##### 5.2.4 模块配置
     在 tp\application\模块 建立config.php
+    
 ##### 5.2.5 动态配置
     在控制器中随时配置
     config(名称,值);
     config::set(名称,值);
+    
 #### 5.3 配置读取
 ##### 5.3.1 config 系统类
  ```php
@@ -134,16 +148,22 @@ class conf {
     }
 }
 ```
+
 ##### 5.3.2 config() 系统方法
     echo config('name');
+    
 ##### 5.3.3 二维读取
     echo config('database.type');
+    
 ##### 5.3.4 扩展配置
     echo config(扩展文件名称配置文件);
+    
 ##### 5.3.4 配置优先级
     动态配置 -> 模块配置 -> 场景配置 -> 扩展配置 -> 应用配置 -> 惯例配置
+    
 ##### 5.3.5 加载顺序
     惯例配置 -> 应用配置 -> 扩展配置 -> 场景配置 -> 模块配置 -> 动态配置
+    
 #### 5.4 环境配置
 ##### 5.4.1 文件的创建
     在tp根目录中建立 .env(不要用中文)
@@ -151,6 +171,7 @@ class conf {
         [database]
         username = xxx
         password = xxxx
+        
 ##### 5.4.2 读取
     \think\Env::get('name');
     \think\Env::get('user','该配置不存在');
@@ -158,11 +179,14 @@ class conf {
     Env::get('name');
     Env::get('user','该配置不存在');
     Env::get('database.username');
+    
 ##### 5.4.3 使用
     use think\Env;
     'username' => Env::get('username');
+    
 ##### 5.4.4 错误调试
     'app_debug' => true;
+    
 ### 6. 控制器
 #### 6.1 定义
 ```php
@@ -175,16 +199,19 @@ class Index {
     }
 }
 ```
+
 #### 6.2 修改根命名空间
     app_namespace 配置参数改为 APP_NAMESPACE
         常量在入口文件中定义
         define('APP_NAMESPACE','app');
+        
 #### 6.3 初始化控制器
     use think\controller;
     public function __initialize()
     {
         echo '这是初始化方法';
     }
+    
 #### 6.4 配置方法
 ```php
 protected $beforeActionList = [
@@ -193,6 +220,7 @@ protected $beforeActionList = [
     'three' => ['except' => 'index,data']   // 指定该方法不在谁前出现
 ];
 ```
+
 #### 6.5 空操作
 ```php
 public function __empty()
@@ -200,6 +228,7 @@ public function __empty()
     echo "这是一个空操作";
 }
 ```
+
 #### 6.6 空控制器
 ```php
 namespace app\index\controller;
@@ -212,22 +241,26 @@ class Error extends controller
     }
 }
 ```
+
 #### 6.7 存在的控制器/空操作
 ```php
 class Index extends Error{}
 ```
+
 #### 6.8 跳转
 ```php
 // thinkphp|traits|controller|Jump.php
 $this->success('跳转信息','跳转路径');
 $this->error('跳转信息'); // 默认返回上一级页面
 ```
+
 #### 6.9 跳转模板
     配置文件中指定的路径,默认跳转页面对应的模板文件
 ```php
 'dispatch_success_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl'
 'dispatch_error_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl'
 ```
+
 ##### 6.9.1 参数
     <!-- 页面提示信息 -->
     <?php echo $msg; ?>
@@ -237,15 +270,18 @@ $this->error('跳转信息'); // 默认返回上一级页面
     <?php echo $wait; ?>
     <!-- 跳转页面地址 -->
     <?php echo $url; ?>
+    
 ##### 6.9.2 自定义模板
     在view下的public文件中新建
         success.html
         error.html
         'dispatch_success_tmpl' => 'public/success'
         'dispatch_errot_tmpl' => 'public/error'
+        
 ##### 6.9.3 重定向
     \think\controller 类的redirect 方法
     $this->redirect('跳转地址',['id'=>2,'name'=>'names']);
+    
 ### 7. 请求
 #### 7.1 请求实例化
 ```php
@@ -255,6 +291,7 @@ $request = Request::instace(); // 返回的都是对象
 // 助手函数
 $request = request(); // 返回的都是对象
 ```
+
 #### 7.2 url路径信息
 ```php
 echo 'domain:' . $request->domain(); // 获取当前域名
@@ -268,12 +305,14 @@ echo 'pathinfo:' . $request->pathinfo();         // 获取URL地址中的PATH_IN
 echo 'pathinfo:' . $request->path();             // 获取URL地址中的PATH_INFO信息,不含后缀
 echo 'ext:' . $request->ext();                   // 获取URL地址中的后缀信息
 ```
+
 #### 7.3 获取模块/控制器/操作系统
 ```php
 echo $request->model();
 echo $request->controller();
 echo $request->action();
 ```
+
 #### 7.4 变量获取
 ##### 7.4.1 助手函数获取请求
     获取全部的get/post获取的参数
@@ -296,26 +335,33 @@ echo $request->action();
         Request::instance()->server();           // 获取全部server变量
         input('server.PHP_SELF');
         input('server!');
+        
 ##### 7.4.2 类的方式获取方式
         $request = Request::instance();
         $data = $request->delete();       // 获取全部
         $data = $request->delete('user'); // 获取某个
+        
 #### 7.5 请求伪装
     <input type="hidden" name="__method" value"PUT" >
     <input type="hidden" name="__method" value="DELETE" >
+    
 #### 7.6 变量过滤
 ##### 7.6.1 转义同时加密
     $request->filter('htmlspecialchars,md5');
     $data = input('param.');
+    
 ##### 7.6.2 全部过滤
     $data = $request->param|get|post('','','htmlspecialchars,md5');
+    
 ##### 7.6.3 单个过滤
     $data = $request->param|gte|post('user','','~,md5');
+    
 #### 7.7 获取全部变量
     $data = input('param.');
     $data = $request->only(['id']);  // 只要什么
     $data = $request->except('user');// 排除什么
     $data = $request->except(['user','ly'],请求类型);// 排除什么
+    
 #### 7.8 变量修饰符
 | 参数 | 含义 |
 | --- | --- |
@@ -325,13 +371,17 @@ echo $request->action();
 | b | 强制转为布尔型|
 | a | 强制转为数组型|
 | f | 强制转为浮点型|
+
     $data = input('post.user/d,b,a,f');
+    
 #### 7.9 判断请求类型
     Request::instance()->isPost();
     request->isPost();
+    
 #### 7.10 伪静态
     URL伪静态后缀(为了方便搜索引擎收录,seo优化)
     'url_html_suffix' => 'html'
+    
 #### 7.11 参数绑定
     按名称绑定,只与参数名称有关,与位置无关
         'url_param_type' => 0
@@ -339,6 +389,7 @@ echo $request->action();
         'url_param_type' => 1
     默认值
         public(function c($id,$name=''))
+        
 ### 8. 视图
 #### 8.1 视图渲染
     助手函数
@@ -350,6 +401,7 @@ echo $request->action();
         use think\View;
         $view = new View;
         echo $view->fetch();
+        
 #### 8.2 分配数据
 ```php
 return view('',['n'=>$name]);
@@ -361,6 +413,7 @@ $this->assign(['n'=>$name,'a'=>$age]);
 // 视图渲染
 return view();
 ```
+
 #### 8.3 调用视图渲染
     跨控制器调用视图
         return view('Requ/index');
@@ -368,20 +421,25 @@ return view();
         return view('add');
     跨模块调用视图
         return view('admin@Index/index');
+        
 #### 8.4 输出替换
 ```php
 'view_replace_str' => [
     '__HCSS__' => '/tp/public/static/home/css',
 ],
 ```
+
 ### 9. 模板
     模板标签 {$n} 变量输出
+    
 #### 9.1 模板引擎标记
     'tpl_begin' => '<',  // 模板引擎普通标签开始标记
     'tpl_end'   => '>',  // 模板引擎普通标签结束标记
+    
 #### 9.2 标记库标签
     'taglib_begin' => '{',  // 标签库标签开始标记
     'taglib_end'   => '}',  // 标签库标签结束标记
+    
 #### 9.3 系统变量
     系统变量输出不需要提前赋值,可以直接在模板中输出,系统变量的输出通常以{$Think}开头
         ${Think.server.script_name} // 输出$_SERVER['SCRIPT_NAME']
@@ -390,6 +448,7 @@ return view();
         {literal}
             {$a=111}
         {/literal}
+        
 #### 9.4 模板布局
 ##### 9.4.1 全局配置方式
 ```php
@@ -412,8 +471,10 @@ class User extends Controller
 { __CONTENT__ }
 { include file="public/footer" /}
 ```
+
 ##### 9.4.2 模板标签方式
     {layout name="layout" /} // 在user/index.html页面中引用
+    
 #### 9.5 模板布局(结构一样,内容不一样)
 ##### 9.5.1 在view中新建一个base.html
 ```php
@@ -424,6 +485,7 @@ class User extends Controller
 {block name="right"}右边分栏{/block}   
 {block name="footer"}底部{/block}   
 ```
+
 ##### 9.5.2 在base|index
 ```php
 {extend name="base"}
@@ -436,6 +498,7 @@ class User extends Controller
     {__block__}@ThinkPHP 版权所有
 {/block}
 ```
+
 #### 9.6 内置标签
 ##### 9.6.1 volist
 | 参数 | 含义 |
@@ -444,13 +507,16 @@ class User extends Controller
 | id   | 模板变量的别名 |
 | offset | 偏移量 |
 | length | 长度 |
+
 ##### 9.6.2 foreach
 | 参数 | 含义 |
 | --- | --- |
 | name | 获取模板变量 |
 | item | 模板变量的别名 |
+
 ##### 9.6.3 for
     start="10" end="0" comparison=">" step="1" name="a"
+    
 #### 9.7 比较标签
 | 参数 | 含义 |
 | --- | --- |
@@ -462,6 +528,7 @@ class User extends Controller
 | elt  | 小于等于 |
 | heq  | 恒等于 |
 | nheq | 不恒等于 |
+
 #### 9.8 条件标签
 ```php
 {if condition = "($name == 1)OR($name > 100)"} value1
@@ -476,6 +543,7 @@ class User extends Controller
 {default /} 默认情况
 {/switch}
 ```
+
 ### 10. 数据库
 #### 10.1 配置文件(application/database.php)
 ```php
@@ -502,6 +570,7 @@ return [
     'sql_explain'=>false                   // 是否需要进行SQL性能分析
 ];
 ```
+
 #### 10.2 方法配置
  ```php
 use think\Db;
@@ -517,6 +586,7 @@ $con = Db::connect([
     'charset'  => 'utf8'                   // 数据库编码默认采用utf-8
 ]);
 ```
+
 #### 10.3 模板配置
 ```php
 // query() 查询
@@ -528,6 +598,7 @@ $data = Db::query($sql);
 $res = Db::execute('insert into user(username) values(?)',['thinkphp']);
 $res = Db::execute('insert into user(username) values(thinkphp)');
 ```
+
 ### 11. 模型
 #### 11.1 定于
     在模块中创建model文件夹
@@ -547,6 +618,7 @@ class Mode extends Controller
 // 1. 切换至项目所在的文件夹中
 // 2. php think make:model index\User
 ```
+
 #### 11.2 模型实例化
 ```php
 use app\index\model\user as UserModel;
@@ -556,6 +628,7 @@ $model->a();
 $model = new \app\index\model\User;
 $model->a();
 ```
+
 #### 11.3 模型属性
     指定主键
         protected $k = 'id';
@@ -563,6 +636,7 @@ $model->a();
         protected $table = 'user';
     模型连接数据库
         protected $connection = [];
+        
 #### 11.4 save() 方法
 ```php
 // 实例化模型后调用save()方法表示新增
@@ -578,12 +652,16 @@ $data->save();
 // save() 方法传入更新条件后表示更新
 $model->save(['id'=>1,'username'=>'update']);
 ```
+
 #### 11.5 获取器
     当读取数据的时候调用模型类里面的方法
+    
 #### 11.6 修改器
     当手动赋值的时候自动调用模型中的方法
+    
 #### 11.7 数据完成
     在不需要手动赋值的情况下对紫都阿德值进行处理后写入数据库
+    
 ### 12. 验证器
 #### 12.1 控制器中
 ```php
@@ -597,6 +675,7 @@ if(!$validate->check($data)) {
     dump($validate->getError());
 }
 ```
+
 #### 12.2 自定义验证器类
 ```php
 // 新建validate文件夹
@@ -626,28 +705,35 @@ if(!$validate->check($data)) {
     dump($validate->getError());
 }
 ```
+
 ### 13. 路由
 #### 13.1 路由的作用
     简化URL路径, 方便记忆, 有利于搜索引擎优化
+    
 #### 13.2 入口文件
 ##### 13.2.1 前后分离
     在public中建立一个admin.php
     define('APP_PATH',__DIR__.'/../application/');
     require __DIR__.'/../thinkphp/start.php';
+    
 ##### 13.2.2 模块绑定
     define('BION_MODULE','admin|index');
+    
 ##### 13.2.3 URL地址的改变
     绑定前
         http://www.*.com/public/index.php/模块/控制器/方法
     绑定后
         http://www.*.com/public/index.php/控制器/方法
+        
 #### 13.3 隐藏前台入口文件
     开启apache的路由重写开启
         LoadModule rewrite_module modlues|mod_rewie.so
         将 # 去掉 重启 apache
     将 .htaccess 移动到public目录中
+    
 #### 13.4 后台入口的安全性
     MD5
+    
 #### 13.5 路由模式
     普通模式(完全关闭路由)
         'url_route_on'   => false,
@@ -658,11 +744,13 @@ if(!$validate->check($data)) {
     强制模式(必须使用路由, 没有则报错)
         'url_route_on'   => true,
         'url_route_must' => true,
+        
 #### 13.6 设置路由(动态单个注册)
     路由设置文件  application\route.php
     use think\Route;
     Route::rule();
     Route::rule(路由表达式, 路由地址, 请求类型, 路由参数(数组), 变量规则(数组));
+    
 ##### 13.6.1 路由形式
     静态路由        Route::rule('a','index/a');
     带参数          Route::rule('course/:id','index/course');
@@ -672,6 +760,7 @@ if(!$validate->check($data)) {
                       http://www.tp.com/test/add   不可以访问
                       http://www.tp.com/test       可以访问
     路由带额外参数    Route::rule('test','index/test?id=10&name=user');
+    
 ##### 13.6.2 设置路由请求类型
 ```php
 // get
@@ -696,6 +785,7 @@ Route::rule('type','index/type','put');
 Route::delete('type','index/type');
 Route::rule('type','index/type','delete');
 ```  
+
 #### 13.7 设置路由(动态批量注册)
 ```php
 Route::rule([
@@ -719,6 +809,7 @@ Route::get([
     'b/:id' => 'index/b',
 ]);
 ```
+
 #### 13.8 设置路由(配置文件设置)
 ```php
 return [
@@ -726,6 +817,7 @@ return [
     'b/:id' => 'idnex/b'
 ];
 ```
+
 #### 13.9 变量规则
     Route::rule('a/:id/:name','index/a','get',
         [],
@@ -734,6 +826,7 @@ return [
     Route::rule('a/:id','index/a','get',
             ['method'=>'get','ext'=>'html','https'=>true],
             ['id'=>'\d+']);
+            
 #### 13.10 快捷路由
 ```php
 // 声明
@@ -757,16 +850,19 @@ class Blog
 // http://www.tp.com/blog/add
 // http://www.tp.cim/blog/index
 ``` 
+
 #### 13.11 URL生成
 ##### 13.11.1 系统类
     生成当前的URL Url::build('');
     跨控制器的URL Url::build('Index/index');
     跨方法       Url::build('a');
     跨模块       Url('/admin.php/index/index');
+    
 ##### 13.11.2 跨方法
     echo url('a');
     echo url('Index/index');
     echo url('/admin.php/index/index');
+    
 ##### 13.11.3 使用
 ```php
 // 普通url
@@ -791,8 +887,10 @@ echo Url('index/index',[
     'name'=> 'user'
 ]);
 ``` 
+
 #### 13.11.4 资源路由
     Route::resource('user','index/user');
+    
 ### 14. 缓存
 ```php
 'cache' => [
@@ -810,6 +908,7 @@ echo Url('index/index',[
     'auto_start' => true        // 是否自动开启SESSION
 ];
 ```
+
 ### 15. 实例
 #### 分页
     thinkphp/think/paginator/driver/Boostrap.php
@@ -831,6 +930,7 @@ echo Url('index/index',[
 'fontttf' => '1.ttf',
 // 中文验证码字体使用扩展包内 'think-captcha/assets/zhttfs' 字体文件
 ```
+
 #### 文件上传
     所有控制器的路径和入口文件是同级的
     上传验证  文件大小、文件类型、文件后缀

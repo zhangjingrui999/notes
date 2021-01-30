@@ -4,6 +4,7 @@
     2. git rm -r --cached 文件名 删除文件夹(这里的文件夹名有空格命令行需要用"\ "来拼接）
     3. git commit -m '删除了文件夹'  提交,添加操作说明
     4. git push 将本次更改更新到GitHub项目上去
+    
 #### 创建忽略文件
 ##### 局部范围内有效的忽略文件
     vim .gitignore
@@ -15,8 +16,10 @@
         
             fd1/*   忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；
             /fd1/*  忽略根目录下的 /fd1/ 目录的全部内容；
+            
 ##### 全局范围内有效的忽略文件
     "版本库根目录/.git/info/exclude",全局范围内的所有忽略规则都以行为单位写在这个文件中;
+    
 ##### 手工指定一个忽略文件
     git config --global core.excludesfile /path/to/.gitignore
     然后手工地在对应位置创建忽略文件.gitignore,并在该文件中写入忽略规则即可;
@@ -29,6 +32,7 @@
         $ git init [project-name]
     # 下载一个项目和它的整个代码历史
         $ git clone [url]
+        
 #### 1.2 配置
     Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
     # 显示当前的Git配置
@@ -38,6 +42,7 @@
     # 设置提交代码时的用户信息
         $ git config [--global] user.name "[name]"
         $ git config [--global] user.email "[email address]"
+        
 #### 1.3 增加/删除文件
     # 添加指定文件到暂存区
         $ git add [file1] [file2] ...
@@ -54,6 +59,7 @@
         $ git rm --cached [file]
     # 改名文件，并且将这个改名放入暂存区
         $ git mv [file-original] [file-renamed]
+        
 #### 1.4 代码提交
     # 提交暂存区到仓库区
         $ git commit -m [message]
@@ -68,6 +74,7 @@
         $ git commit --amend -m [message]
     # 重做上一次commit，并包括指定文件的新变化
         $ git commit --amend [file1] [file2] ...
+        
 #### 1.5 分支
     # 列出所有本地分支
         $ git branch
@@ -98,6 +105,7 @@
     # 删除远程分支
         $ git push origin --delete [branch-name]
         $ git branch -dr [remote/branch]
+        
 #### 1.6 标签
     # 列出所有tag
         $ git tag
@@ -117,6 +125,7 @@
         $ git push [remote] --tags
     # 新建一个分支，指向某个tag
         $ git checkout -b [branch] [tag]
+        
 #### 1.7 查看信息
     # 显示有变更的文件
         $ git status
@@ -159,6 +168,7 @@
         $ git show [commit]:[filename]
     # 显示当前分支的最近几次提交
         $ git reflog
+        
 #### 1.8 远程同步
     # 下载远程仓库的所有变动
         $ git fetch [remote]
@@ -176,6 +186,7 @@
         $ git push [remote] --force
     # 推送所有分支到远程仓库
         $ git push [remote] --all
+        
 #### 1.9 撤销
     # 恢复暂存区的指定文件到工作区
         $ git checkout [file]
@@ -199,6 +210,7 @@
     # 暂时将未提交的变化移除，稍后再移入
         $ git stash
         $ git stash pop
+        
 #### 1.10 其他
     # 生成一个可供发布的压缩包
         $ git archive

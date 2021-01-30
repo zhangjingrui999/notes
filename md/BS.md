@@ -7,6 +7,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 ```
+
 ### 1. 响应式设计
 ```html
 <div class="container"></div>
@@ -33,42 +34,47 @@
     }
 </style>
 ```
+
 ### 2. 栅格系统
     将父块平均分为 12块, *代表几个块
-| 值 | 含义 |
+    
+| 值   | 含义 |
 | --- | --- |
 | col-md-* | 中等屏幕 |
 | col-xs-* | 微小屏幕 |
 | col-md-offset-* | 左外边距 *块 |
+
 ### 3. 排版
 | class | 含义 | 样式 |
 | --- | --- | --- |
 | small | 标签 | font-size: 65%; color: #777; |
-| lead | 段落样式 | margin-bottom: 20px; line-height: 1.4; font-weight: 300; |
-| mark | 标签, 背景色 | padding:2em; background: #ff0 / #fcf8e3; |
-| del  | 删除线 | |
-| text-left | 文本左对齐 |
-| text-right| 文本右对齐 |
-| text-center | 文本居中对齐 |
+| lead  | 段落样式 | margin-bottom: 20px; line-height: 1.4; font-weight: 300; |
+| mark  | 标签, 背景色 | padding:2em; background: #ff0 / #fcf8e3; |
+| del   | 删除线 | |
+| text-left    | 文本左对齐   |
+| text-right   | 文本右对齐   |
+| text-center  | 文本居中对齐 |
 | text-justify | 文本俩端对齐 |
-| blockquote | 标签, 引用 |
+| blockquote   | 标签, 引用  |
 | blockquote-reverse | 引用反转 |
 | code | 标签 | padding: 2px 4px; font-size: 90%; color: #c7254e; background: #f9f2f4; border-radius: 4px; |
-| kbd | 标签, 黑底白字 | padding: 2px 4px; font-size: 90%; color: #fff; background: #333; border-radius: 3px;|
+| kbd  | 标签, 黑底白字 | padding: 2px 4px; font-size: 90%; color: #fff; background: #333; border-radius: 3px;|
+
 ### 4. 表格
 | class | 含义 |
-| --- | --- |
-| table | 出现表格上的边线 |
-| table-bordered | 出现所边线 |
-| table-striped | 隔行换色 |
-| table-hover | 鼠标移动特效 |
-| table-condensed | 紧缩表格 |
+| ---   | --- |
+| table           | 出现表格上的边线 |
+| table-bordered  | 出现所边线 |
+| table-striped   | 隔行换色  |
+| table-hover     | 鼠标移动特效 |
+| table-condensed | 紧缩表格    |
 | active, success, warning, danger, info | 表格颜色 |
 | table-responsive | 响应式表格 |
-| img-responsive | 响应式图片 |
-| img-circle | 圆形图片 |
-| img-rounded | 圆角样式 |
-| img-thumbnail | 边框样式 |
+| img-responsive   | 响应式图片 |
+| img-circle       | 圆形图片 |
+| img-rounded      | 圆角样式 |
+| img-thumbnail    | 边框样式 |
+
 ### 5.表单
 | class | 含义 |
 | --- | --- |
@@ -77,12 +83,14 @@
 | control-label | 水平表单 文本与文本框成左右结构 |
 | form-inline | 左对齐并成为行快标签 |
 | form-horizontal | |
+
 #### 5.1 Input 边框颜色
 | class | 含义 |
-| --- | --- |
+| ---   | --- |
 | has-success | |
-| has-warning  | |
+| has-warning | |
 | has-error   | |
+
 #### 5.2 表单图标
     has-feedback
         form-control-feedback
@@ -105,6 +113,7 @@
 | input-sm | 小 30px |
 | input-xs | 中 36px |
 | input-lg | 大 46px |
+
 ### 6. 按钮
 #### 6.1 标签
 ```html
@@ -114,6 +123,7 @@
     <input type="submit" value="">
     <input type="reset" value="">
 ```
+
 #### 6.2 类
 ```css
 /*基类*/
@@ -175,11 +185,13 @@ a {
     disabled: true; /* a链接表面禁用还能点 */
 }
 ```
+
 ### 7. holder.js 占位图片
 ```html
 <script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 <img src="holder.js/300x200" alt="">
 ```
+
 ### 8. 辅组类
 #### 8.1 文本颜色
     .text-muted
@@ -188,15 +200,18 @@ a {
     .text-info
     .text-warning
     .text-danger
+    
 #### 8.2 背景颜色
     .background-primary
     .background-success
     .background-info
     .background-warning
     .background-danger
+    
 #### 8.3 按钮
     .close  关闭按钮
     .caret  三角符号
+    
 #### 8.4 按钮组
     .btn-group
     .btn-toolbar    按钮工具栏
@@ -207,34 +222,42 @@ a {
         .btn-group
     .btn-group-vertical     垂直按钮组
     .btn-group-justified    俩端对齐的按钮组
+    
 #### 8.5 浮动
     .pull-left  左浮动
     .pull-right 右浮动
     .clear-fix  清除浮动
+    
 #### 8.6 块居中
     .center-block
+    
 #### 8.7 显示与隐藏
     .show
     .hidden
+    
 #### 8.8 字体图标
     .glyphicon 
     .glyphicon-superscript
+    
 #### 8.9 下拉菜单
     .dropdown
     .dropdown-toggle
     .dropdown-menu
     data-toggle="dropdown"
+    
 #### 8.10 输入框组
     .input-group
     .input-group-addon
     .input-group-lg
     .input-group-sm
+    
 ### 9. 导航
     .nav    .nav-tabs   标签页
     .nav    .nav-pills  胶裹式
     .nav-stacked        垂直导航
     .nav-justifyied     俩端对齐
     .dropdown           下拉菜单
+    
 #### 9.1 导航条
     .navbar .navbar-default .navbak-inverse 
     .nav    .navbar-fixed-bottom .navbar-fixed-top
@@ -242,44 +265,60 @@ a {
     .collapsed data-toggle="collapse" data-torget="#mybs"
     .icon-bar .navbar-collapse .navbar-nav .navbar-right .navbar-left
     .active .navbar-text .nav-bar-form .navbar-btn
+    
 #### 9.2 路径导航
     .breadcrumb
     .active
+    
 ### 10. 分页
     .pagination
     .pagination-lg
     .pagination-sm
+    
 #### 10.1 翻页
     .page .previous .next
+    
 ### 11.标签
     .label .label-primary .label-default .label-info .label-success .label-warning .label-danger
+    
 ### 12. 其他
 #### 12.1 徽章
     .badge
+    
 #### 12.2 巨幕
     .jumnotron
+    
 #### 12.3 页头
     .page-header
+    
 #### 12.4 缩略图
     .thumbnail
     .caption
+    
 #### 12.5 警告框
     .alert .alert-success .alert-info .alert-warning .alert-danget .alert-link .alert-dismissible data-dismiss="alert"
+    
 #### 12.6 进度条
     .progress .progress-bar .progress-bar-success .progress-bar-info .progress-bar-warning
     .active .progress-bar-danger .progress-bar-striped style="width:60%"
+    
 #### 12.7 媒体对象
     .media .media-left .media-right .media-top .media-bottom .media-body .media-middle
+    
 #### 12.8 列表组
     .list-group .list-group-item .list-group-item-info .list-group-item-success .list-group-item-warning
     .list-group-item-danger .list-group-item-heading .list-group-item-text .active
+    
 #### 12.9 画板
     .pabel .pabel-primary .pabel-success .pabel-warning .pabel-danger
     .pabel-info .pabel-heading .pabel-title .pabel-body .pabel-footer
+    
 #### 12.10 响应式的嵌入式页面比例
     .embed-responsive .embed-responsive-16by9 .embed-responsive-item .embed-responsive-4by3
+    
 #### 12.11 well
     .well .well-lg .well-sm
+    
 #### 12.12 模态框(modal)
     .modal .modal-dialog .modal-content .modal-header .modal-title .modal-body .modal-footer .modal-lg .modal-sm fode
     data-toggle="modal" data-target="#mymodal" data-dismiss="mymodal"

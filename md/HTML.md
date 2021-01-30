@@ -111,6 +111,7 @@
     </script>
 </html>
 ```
+
 #### 自适应布局
 ```html
     <!-- 页面等比缩放，一般不会变形   -->
@@ -184,6 +185,7 @@
         }
     </style>
 ```
+
 ### Flex 布局
 #### 标签
     响应式弹性布局,webkit内核加 -webkit前缀
@@ -197,6 +199,7 @@ h1{
     display: inline-block;
 }
 ```
+
 #### 主轴(X)
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -205,11 +208,12 @@ h1{
 |                | column      | 垂直自适应排列 |
 |                | column-reverse | 反垂直自适应排列 |
 | flex-wrap      | nowrap      | 不换行,默认效果 |
-| 换行方式        | wrap        | 宽不足,换下行 |
+| 换行方式         | wrap       | 宽不足,换下行 |
 |                | wrap-reverse| 反转换行 | 
 | flex-flow      |[direction] [wrap] | 简写: 浮动 换行 |
-### 对齐方式
-#### 主轴(默认水平,column后为垂直)
+
+#### 对齐方式
+##### 主轴(默认水平,column后为垂直)
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | justify-content | flex-start    | 左端(开始)对齐 |
@@ -217,7 +221,8 @@ h1{
 |                 | center        | 居中 |
 |                 | space-between | 俩端对齐 |
 |                 | space-around  | 俩端居中对齐 |
-#### 交叉轴
+
+##### 交叉轴
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | align-items | flex-start | 上对齐 |
@@ -225,14 +230,18 @@ h1{
 |             | center     | 居中 |
 |             | stretch    | 自适应(没有高时铺满) |
 |             | baseline   | 第一行文字底端对齐 |
-#### 多轴(单轴时无效)
+
+##### 多轴(单轴时无效)
+| 属性 | 值  | 含义 |
+| --- | --- | --- |
 | align-content | flex-start    | 所有项目顶端对齐 |
 |               | flex-end      | 所有项目底部对齐 |
 |               | center        | 所有项目垂直居中 |
 |               | space-between | 垂直俩端对齐 |
 |               | space-around  | 垂直居中俩端分散 |
 |               | stretch       | 自适应(没有高时铺满) |
-### 项目属性
+
+#### 项目属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | order       | (int)num    | 排序 |
@@ -243,12 +252,14 @@ h1{
 |             | flex-end    | 下端对齐 |
 |             | center      | 居中 |
 |             | auto        | 继承父属性,没有时等同于stretch |
+
 ### box-sizing
 | 值  | 含义 |
 | --- | --- |
 | content-box | w / h = center; padding + margin另算,不适合UI图开发 |
 | border-box  |	w / h = center + padding + margin | 
 | inherit	  | 继承 |
+
 ### 1. HTML标准网页
 ```html
 <!-- 让浏览器用H5的引擎来解析，避免兼容性问题 -->
@@ -285,11 +296,13 @@ h1{
     </body>
 </html>
 ```
+
 ### 2. 标签
     所有标签的共同属性：id,title,class, 当一个标签不给定颜色时是无色透明的
+    
 #### 2.1 实体标签
     无法在浏览器\网页中直接显示
-| 值  | 含义 |
+| 值   | 含义 |
 | --- | --- |
 | &lt; | <  |
 | &gt; | >  |
@@ -297,17 +310,20 @@ h1{
 | &raquo; | >> |
 | &nbsp;  | 空格 |
 | &times; | ×,模拟叉号 |
+
 #### 2.2 无意义标签
 ```html
     <span></span>   <!-- 无意义行标签 -->
     <div></div>     <!-- 无意义块标签，当块标签进行定位时，无法独占一行 -->
 ```
+
 #### 2.3 Display 行块标签属性
-| 值  | 含义 |
+| 值   | 含义 |
 | --- | --- |
 | block        | 块标签，有宽高，独占一行，定位时独占一行特性消失 |
 | inline       | 行标签，无宽，有高，不能独占一行 |
 | inline-block | 行块标签，有宽高，不能独占一行 |
+
 #### 2.4 格式标签
 ```html
     <i></i>             斜体文本
@@ -333,23 +349,29 @@ h1{
         <dd></dd>       自定义列表内容
     </dl>
 ```
+
 #### 2.5 音频标签
 ```html
     <audio src="路径" controls出现控件 loop单曲循环 autoplay自动播放></audio>
 ```
+
 #### 2.6 视频标签
 ```html
     <video src="路径" controls出现控件 height loop单视频循环 autoplay自动播放></video>
 ```
+
 #### 2.7 图片标签
 ```html
     <img src="图片路径" alt="图片加载失败显示" title="图片标题" width="宽" height="高" usemap="热点地图">
 ```
+
 #### 2.8 热点地图
     现已基本不再使用，改用div和canvas代替
+    
 ```html
     <area shape="circle" coords="Y,X,R" href="网址" target="打开方式" alt="加载失败显示">
 ```
+
 #### 2.9 a链接代替热点地图
 ```html
     <img src="" alt="">
@@ -365,12 +387,14 @@ h1{
         }
     </style>
 ```
+
 ### 3. 颜色
 | 表示 | 格式 |
 | --- | --- |
-| 英文 | red green blue |
-| 十进制 | rgb(255,0,0) rgb(0,255,0) rgb(0,0,255) |
+| 英文     | red green blue |
+| 十进制   | rgb(255,0,0) rgb(0,255,0) rgb(0,0,255) |
 | 十六进制 | #fff #0f0 #00f |
+
 ### 4. URL
 #### 4.1 解析类型
 | 值   | 含义 |
@@ -379,7 +403,8 @@ h1{
 | https://| 安全访问协议 |
 | www.*.* | 目标网址域名 |
 | /index.php | 网站脚本目录 |
-| ?id=1   | 脚本参数 |
+| ?id=1      | 脚本参数 |
+
 #### 4.2 Target 打开方式
 | 值   | 含义 |
 | --- | --- | 
@@ -389,14 +414,17 @@ h1{
 | _top    | 顶窗口 |
 | 窗口名称  | 某窗口 |
 | 内嵌窗口(iframe) | |
+
 #### 4.3 锚点链接
     由 #name 跳转至 name,当跨页面时为 页面路径#name
-    ```html
-        <a href="[url.html]#name"></a>
-        <a name="name"></a>
-    ```
+```html
+    <a href="[url.html]#name"></a>
+    <a name="name"></a>
+```
+    
 #### 4.4 数据传输入库流程
     表单数据 -> 脚本 -> 数据库 -> 脚本 -> 页面渲染
+    
 ### 5. Frame框架(可用后台框架的开发)
 #### 5.1 架构
 ```html
@@ -408,23 +436,26 @@ h1{
         </frameset>
     </frameset>
 ```
+
 #### 5.2 frameset属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
-| cols | (int)num | 横向分隔 |
-| rows | (int)num | 纵向分隔 |
+| cols   | (int)num | 横向分隔 |
+| rows   | (int)num | 纵向分隔 |
 | border |        | 边框大小 |
-| frameborder | bool | 是否有边框 |
-| bordercolor | bool | 边框颜色  |
+| frameborder  | bool | 是否有边框 |
+| border-color | bool | 边框颜色  |
+
 #### 5.3 frame属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | name      |     | 名字 |
 | src       |     |  路径 |
-| noresize   |     | 不可改动大小 |
+| noresize  |     | 不可改动大小 |
 | scrolling | yes | 显示滚动条 |
 | scrolling | no  | 不显示滚动条 |
 | scrolling | auto| 根据文本大小自适应显示滚动条(默认) |
+
 ### 6. Table 表格
     表格中有多少<tr>就有多少行，每个<tr>中有多少<td>就代表有多少列
 ```html
@@ -437,6 +468,7 @@ h1{
         </tr>
     </table>
 ```
+
 #### 6.1 table属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -454,6 +486,7 @@ h1{
 | cellspacing |  | 单元格外边距 |
 | cellpadding |  | 单元格内边距 |
 | caption     | string | 表名 |
+
 #### 6.2 tr属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -464,6 +497,7 @@ h1{
 |       | middle | 对内容进行居中对齐（默认值）|
 |       | bottom | 对内容进行下对齐 |
 |       | baseline | 与基线对齐 |
+
 #### 6.3 td属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -480,6 +514,7 @@ h1{
 |       | baseline | 与基线对齐 |
 |colspan| int(num) | 单元格横合并 |
 |rowspan| int(num) | 单元格纵合并 |
+
 ### 7. Form 表单
 #### 7.1 标签架构
 ```html
@@ -511,27 +546,30 @@ h1{
         <button></button>            // 提交按钮
     </form>
 ```
+
 #### 7.2 input属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
-| type| string | 框类型 |
-| name| string | 字段名,name[]为多选字段 |
-| value | string | 默认值 |
+| type        | string | 框类型 |
+| name        | string | 字段名,name[]为多选字段 |
+| value       | string | 默认值 |
 | placeholder | string | 背景提示词 |
 | src         | string | 图片路径，image专属  |
 | maxlength   | int(num) | 最大长度 |
 | required    |        | 规定文本区域是必填的 |
-| valign  | top    | 对内容进行上对齐 |
-| outline | none   | 去除聚焦边框 |
-| readonly|        | 只读,可带值 |
-| disabled|        | 只读,不可带值|
-| contenteditable ||是否可以进行编辑|
+| valign      | top    | 对内容进行上对齐 |
+| outline     | none   | 去除聚焦边框 |
+| readonly    |        | 只读,可带值 |
+| disabled    |        | 只读,不可带值|
+| contenteditable |    |是否可以进行编辑|
+
 #### 7.3 select属性
 | 属性 | 含义 |
 | --- | --- |
 | multiple | 允许select进行多选，需要配合name[]使用 |
 | size     | 同时展示个数 |
 | required | 规定文本区域是必选的 |
+
 #### 7.4 textarea属性
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -545,15 +583,18 @@ h1{
 | wrap      | soft     | 当在表单中提交时，textarea 中的文本不换行,默认值 |
 |           | hard     | 当在表单中提交时，textarea 中的文本换行（包含换行符,当使用 "hard" 时，必须规定 cols 属性 |
 | resize    | none     | 彻底禁用拖动 |
-| min-height min-width max-height max-width || 组合使用(右下角的拖动图标依然存在) |
-#### 8. a链接
+| min-height min-width max-height max-width | | 组合使用(右下角的拖动图标依然存在) |
+
+### 8. a链接
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | text-decoration | none | 消除下划线 |
+
 ### 9. li
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
 | list-style-type | none | 消除小圆点 |
+
 ### 10. img
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -568,6 +609,7 @@ h1{
 |                | length  | |
 |                | %	   | 使用 "line-height" 属性的百分比值来排列此元素 允许使用负值 |
 |                | inherit | 规定应该从父元素继承 vertical-align 属性的值 |
+
 ### 11. Canvas
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -578,6 +620,7 @@ h1{
 | fillRect(x,y,w,h) | | 填充矩形 |
 | strokeStyle | (color) | 描边 |
 | strokeRect(x,y,w,h) | | 描边矩形 |
+
 ```html
 <html lang="">
     <head>

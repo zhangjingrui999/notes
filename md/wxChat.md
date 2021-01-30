@@ -6,9 +6,11 @@
     var app = getApp();
     app.yzm();
 ```
+
 #### 事件
 ##### 绑定事件 bindtap
     <view id="tapTest" data-hi="WeChat" bindtap="tapName"> Click me! </view>
+    
 ```js
 // 在相应的Page定义中写上相应的事件处理函数，参数是event
 Page({
@@ -59,6 +61,7 @@ Page({
     }
 })
 ```
+
 ### 二维数组
 ```js
     page({
@@ -74,6 +77,7 @@ Page({
         wx:for="{{ item }}"
             {{ item.id }}
 ```
+
 ### 流程控制
 #### If else
 ```html
@@ -81,12 +85,14 @@ Page({
     <view wx:elif="{{ true }}"></view>
     <view wx:else></view>
 ```
+
 #### For 循环
 ```html
     <view wx:for="{{ arr }}" wx:key="string | *this" wx:for-index="index" wx:for-item="item">
         {{ index }} {{ item }}
     </view>
 ```
+
 #### Block 无意义标签
 ```html
     <block wx:for="{{ arr }}">
@@ -97,6 +103,7 @@ Page({
         <view></view>
     </block>
 ```
+
 ### 模板
 #### 模板的使用
 ```html
@@ -104,11 +111,13 @@ Page({
     <template is="temp_name"></template>   // 引用
     <template is="temp_name" data="{{ ...data }}" /> // 数据   ...将一个对象展开 
 ```
+
 #### 引用外部模板
 ```html
     <import src="url" />  // 动态引用
     <include src="url" /> // 静态引用
 ```
+
 ### 组件
 #### hover(适用于view)
 | 属性 | 值  | 含义 |
@@ -117,12 +126,14 @@ Page({
 | hover-class     | (string) | 点击后触发class样式(短暂) |
 | hover-stay-time | (int)num | 保留num毫秒 |
 | hoer-start-time | (int)num | 点击num毫秒后触发 |
+
 #### scroll-view 滚动(要有宽高)
 ```html
 <scroller-view>
     <swiper-item><img src="" alt=""></swiper-item>
 </scroller-view>
 ```
+
 | 属性 | 值  | 默认值 | 含义 |
 | --- | --- | ---  | --- |
 | scroll-x	            | boolean	    | false | 允许横向滚动 |
@@ -148,6 +159,7 @@ Page({
 | bindrefresherrefresh	| eventhandle   |	    | 自定义下拉刷新被触发 |
 | bindrefresherrestore	| eventhandle	|		| 自定义下拉刷新被复位 |
 | bindrefresherabort	| eventhandle	|		| 自定义下拉刷新被中止 |
+
 #### Icon 微信小图标
 ```html
     <icon type="" size="" color=""></icon>
@@ -163,6 +175,7 @@ Page({
 | download          | 下载,    绿底白字    |
 | search            | 搜索,    白底灰字    |
 | clear             | 清除,    灰底白字    |
+
 #### Text 文本
 ```html
     <text></text>   <!-- 类似P标签 -->
@@ -172,6 +185,7 @@ Page({
 | selectable | bool   | false | 文本是否可选 |
 | space      | string |		  |	显示连续空格 |
 | decode	 | bool   |	false |	是否解码    |
+
 #### Progress 进度条
 ```html
     <progress></progress>
@@ -190,6 +204,7 @@ Page({
 | active-mode	| string	    | backwards	| backwards: 动画从头播; forwards: 动画从上次结束点接着播 |
 | duration	    | number	    | 30	  |	进度增加1%所需毫秒数 |
 | bindactiveend	| eventhandle	| 	      |	动画完成事件 |
+
 #### Button 组件
 | 属性 | 值  | 默认值 | 含义 |
 | --- | --- | ---  | --- |
@@ -232,6 +247,7 @@ Page({
 | binderror	             | eventhandle |			    | 当使用开放能力时，发生错误的回调，open-type=launchApp时有效 |
 | bindopensetting	     | eventhandle |			    | 在打开授权设置页后回调，open-type=openSetting时有效 |
 | bindlaunchapp	         | eventhandle | 		        | 打开 APP 成功的回调，open-type=launchApp时有效 |
+
 #### Form 表单组件
 ```html
 <form action="">
@@ -255,6 +271,7 @@ Page({
 | bindsubmit	        | eventhandle	  | 	  | 携带 form 中的数据触发 submit 事件，event.detail = {value : {'name': 'value'} , formId: ''} |
 | bindreset	            | eventhandle	  |	      | 表单重置时会触发 reset 事件	1.0.0 |
 | e.detail.value        | 获取 input 中的值 |       | |
+
 ##### Input 输入框组件
 ```html
     <input type="text">
@@ -283,6 +300,7 @@ Page({
 | bindblur          |        | 输入框失焦时触发 |
 | bindconfirm       |        | 点击完成按钮时触发 |
 | bindinput         |        | 当输入时，触发input事件,处理函数可直接return一个字符串替换输入框内容 |
+
 ##### Checkbox 复选框组件
 ```html
 <checkbox-group bindchange="EventHandle"> 
@@ -296,6 +314,7 @@ Page({
 | disabled | boolean | false   | 是否禁用 |
 | checked  | boolean | false   | 当前是否选中,可用来设置默认选中 |
 | color	   | string	 | #09BB07 | checkbox的颜色,同css的color |
+
 ##### Radio 单选框组件
 ```html
 <radio-group bindchange="EventHandle">
@@ -309,6 +328,7 @@ Page({
 | checked  | boolean | false   | 当前是否选中 |
 | disabled | boolean | false   | 是否禁用 |
 | color	   | string	 | #09BB07 | radio的颜色，同css的color |
+
 ##### Picker 滚动选择器组件
 ```html
 <picker></picker>
@@ -331,6 +351,7 @@ Page({
 | range-key  | string		|          | 当 range 是一个 Object Array 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容 |
 | value	     | number	    | 0	       | 表示选择了 range 中的第几个（下标从 0 开始） |
 | bindchange | eventhandle	|	       | value改变时触发 change 事件，event.detail = {value} |
+
 ###### 多列选择器 mode = multiSelector
 | 属性 | 值  | 默认值 | 含义 |
 | --- | --- | ---  | --- |
@@ -339,6 +360,7 @@ Page({
 | value	           | array	      | []	     | 表示选择了 range 中的第几个（下标从 0 开始）|
 | bindchange	   | eventhandle  |		     | value 改变时触发 change 事件，event.detail = {value} |
 | bindcolumnchange | eventhandle  |		     | 列改变时触发 |
+
 ###### 时间选择器 mode = time
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -346,6 +368,7 @@ Page({
 | start	     | string	   | 表示有效时间范围的开始，字符串格式为"hh:mm" |
 | end	     | string	   | 表示有效时间范围的结束，字符串格式为"hh:mm" |
 | bindchange | eventhandle | value 改变时触发 change 事件，event.detail = {value} |
+
 ###### 日期选择器 mode = date
 | 属性 | 值  | 含义 |
 | --- | --- | --- |
@@ -354,12 +377,14 @@ Page({
 | end	     | string	   | 表示有效日期范围的结束，字符串格式为"YYYY-MM-DD" |
 | fields	 | string	   | day	有效值 year,month,day，表示选择器的粒度 |
 | bindchange | eventhandle | value 改变时触发 change 事件，event.detail = {value} |
+
 ###### 省市区选择器 mode = region
 | 属性 | 值  | 默认值 | 含义 |
 | --- | --- | ---  | --- |
 | value	      | array	    | [] | 表示选中的省市区，默认选中每一列的第一个值 |
 | custom-item |	string		|    | 可为每一列的顶部添加一个自定义的项 |
 | bindchange  | eventhandle |	 | value 改变时触发 change 事件，event.detail = {value, code, postcode}，其中字段 code 是统计用区划代码，postcode 是邮政编码 |
+
 ##### Slider 滑动选择器组件
 ```html
 <slider></slider>
@@ -380,6 +405,7 @@ Page({
 | show-value	  | boolean	    | false	  | 是否显示当前 value |
 | bindchange	  | eventhandle |		  |	完成一次拖动后触发的事件，event.detail = {value} |
 | bindchanging	  | eventhandle |		  |	拖动过程中触发的事件，event.detail = {value} |
+
 ##### Switch 开关选择器组件
 ```html
 <swith></swith>
@@ -391,6 +417,7 @@ Page({
 | type	     | string	   | switch	 | 样式，有效值: switch, checkbox |
 | color	     | string	   | #04BE02 | switch 的颜色,同css的color     |
 | bindchange | eventhandle |		 | checked 改变时触发 change 事件，event.detail={ value} |
+
 ##### Textarea 文本域组件
 ```html
     <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -421,6 +448,7 @@ Page({
 | bindinput	        | eventhandle		 |  | 当键盘输入时，触发 input 事件，event.detail = {value, cursor, keyCode}，keyCode 为键值，目前工具还不支持返回keyCode参数。bindinput 处理函数的返回值并不会反映到 textarea 上 |
 | bindconfirm	    | eventhandle		 |  | 点击完成时， 触发 confirm 事件，event.detail = {value: value} |
 | bindkeyboardheightchange | eventhandle |  | 键盘高度发生变化的时候触发此事件，event.detail = {height: height, duration: duration} |
+
 ### Navigator 导航
 ```html
 <navigator></navigator>
@@ -452,6 +480,7 @@ Page({
 | bindsuccess  | string |		      |	当target="miniProgram"时有效，跳转小程序成功 |
 | bindfail	   | string |		      |	当target="miniProgram"时有效，跳转小程序失败 |
 | bindcomplete | string |		      |	当target="miniProgram"时有效，跳转小程序完成 |
+
 ### 小程序错误码
 #### errcode
 ```tetx
@@ -636,6 +665,7 @@ Page({
     '44002' => 'POST BODY 为空',
     '47001' => 'POST BODY 格式错误'	
 ```
+
 #### 云开发
 ```text
     -1	通用错误
@@ -710,6 +740,7 @@ Page({
     -604101	微信后台云函数错误：调用系统错误
     -605101	微信后台 HTTP API 错误：查询语句解析失败
 ```
+
 ### 其他
 #### 微信小程序幕层禁止滑动
     1.在幕层最外层view中加入 catchtouchmove="preventTouchMove"
