@@ -1,2 +1,3 @@
 # 忽略txt目录
+.token.txt
 /txt

@@ -9,7 +9,7 @@
     同一优先级时先后覆盖，!important为最优先级别
     外部 = 内部 < 类 < id < 内联
     
-### 3. 选择器
+### 3. [选择器](https://www.runoob.com/cssref/css-selectors.html)
 #### 3.1 常用选择器
     类(.*) > 标签 > id(#*)
     
@@ -29,7 +29,8 @@
 | :first-letter | 所有符合条件标签的首字符 只能用于块级元素(包括display:[inline-]block;)|
 | :first-line   | 所有符合条件的标签 |
 | :last-child   | 最后一个符合条件的标签 |
-| :nth-child()  | 第()个符合条件的标签 |
+| :nth-child()  | 父级的第几个子标签 |
+| :nth-of-type()| 父级的第几个某标签 |
 
     :first-letter适用的属性
         font
@@ -60,7 +61,8 @@
 | a, b  | 组合标签 选中 a和b |
 | a  b  | 关联标签 选中 a下的b |
 | a> b  | 父子标签 选中 a和a下的b |
-| a+ b  | 兄弟标签 选中 a后面的b |
+| a+ b  | 下个标签 选中 a后面的b |
+| a~ b  | 兄弟标签 选择 a同级的b | 
 
 #### 3.5 属性选择器
 | 属性 | 含义 |
