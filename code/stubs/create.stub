@@ -1,0 +1,43 @@
+<?php
+
+use Hyperf\Database\Schema\Schema;
+use Hyperf\Database\Schema\Blueprint;
+use Hyperf\Database\Migrations\Migration;
+
+class %DummyClass% extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        if (Schema::hasTable('%DummyTable%')) {
+            return;
+        }
+        Schema::create('%DummyTable%', function (Blueprint $table) {
+            // 指定表存储引擎
+            $table->engine = 'InnoDB';
+            // 指定数据表的默认字符集
+            $table->charset = config('databases.default.charset', 'utf8mb4');
+            // 指定数据表默认的排序规则
+            $table->collation = config('databases.default.collation', 'utf8mb4_unicode_ci');
+
+            // 字段部分
+            %DummyContent%
+
+            // 表注释部分
+            %DummyComment%
+
+            // 索引部分
+            %DummyIndex%
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('%DummyTable%');
+    }
+}
